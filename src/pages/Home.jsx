@@ -1,9 +1,8 @@
-import Filter from "../components/Filter.js";
+import Filter from "../components/Filter.jsx";
 
 const HomePage = () => {
   return (
     <>
-      <h1>HomePage</h1>
       <Filter />
     </>
   );

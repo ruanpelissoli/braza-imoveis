@@ -1,0 +1,130 @@
+.resultDetailPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.imageContainer {
+  max-width: 600px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.imageWrapper {
+  width: 35%;
+  margin-left: 30px;
+  background-color: rgb(90, 89, 89);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.295);
+  /*defina aqui a altura que você deseja*/
+}
+
+.currentImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin: auto; /*centraliza horizontalmente*/
+  display: block; /*centraliza verticalmente*/
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.295);
+}
+
+.navigationButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px 16px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.previousButton {
+  left: 0;
+}
+
+.nextButton {
+  right: 0;
+}
+
+.navigationButton:hover {
+  opacity: 0.5;
+}
+
+.navigationButton.left {
+  left: 0;
+}
+
+.navigationButton.right {
+  right: 0;
+}
+
+.detailsContainer {
+  width: 60%;
+  background-color: #ebebeb;
+  margin-right: 30px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.295);
+  border-radius: 4px;
+  padding: 15px 10px;
+}
+
+.detailsContainer h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.detailsContainer h3 {
+  font-size: 1.5rem;
+  color: rgb(3, 175, 3);
+}
+
+.detailsContainer p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.detailsContainer a {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.urlButton {
+  background-color: black;
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.urlButton:hover{
+    background-color: rgb(51, 51, 51);
+  }
+
+
+
+@media screen and (max-width: 768px) {
+  .resultDetailPage {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imageContainer {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .detailsContainer {
+    width: 100%;
+  }
+}

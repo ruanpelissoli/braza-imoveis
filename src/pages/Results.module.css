@@ -1,32 +1,14 @@
-li {
-  display: inline-block;
-  margin: 2rem 2rem;
+.resultul {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-h1 {
-  text-transform: uppercase;
-  font-family: canter;
-  letter-spacing: 2px;
-  color: black;
-}
+/* Estilo para cada item da lista */
 
-p {
-  text-transform: uppercase;
-  font-family: canter;
-  letter-spacing: 2px;
-  color: black;
-}
 
-a {
-  text-decoration: none;
-}
-
-.eachResult {
-  border: 1px solid black;
-  padding: 4rem 4rem;
-}
-
-.eachResult:hover {
-  background-color: #ccc;
-  transition: 0.2s;
-}

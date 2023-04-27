@@ -1,10 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/Home.js";
-import Results from "./pages/Results.js";
-import RootLayout from "./pages/Root.js";
-import ErrorPage from "./pages/Error.js";
-import ImobiliariasPage from "./pages/Imobiliarias.js";
-import ResultDetailPage from "./pages/ResultDetail.js";
+import HomePage from "./pages/Home.jsx";
+import Results from "./pages/Results.jsx";
+import RootLayout from "./pages/Root.jsx";
+import ErrorPage from "./pages/Error.jsx";
+import ImobiliariasPage from "./pages/Imobiliarias.jsx";
+import ResultDetailPage from "./pages/ResultDetail.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
         path: "/results",
         element: <Results />,
       },
-      { path: "/results/:resultId", element: <ResultDetailPage /> },
+      { path: "/results/:id", element: <ResultDetailPage /> },
       { path: "/imobiliarias", element: <ImobiliariasPage /> },
     ],
   },
