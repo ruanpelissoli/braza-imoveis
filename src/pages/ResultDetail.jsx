@@ -1,13 +1,28 @@
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import classes from "./ResultDetail.module.css";
-import { useState } from "react";
 
 const ResultDetailPage = () => {
-  const location = useLocation();
-  const { url, title, price, description, details, propertyImages } =
-    location.state;
-
+  const { id } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imovel, setImovel] = useState([]);
+  
+
+  useEffect(() => {
+    const fetchImoveis = async () => {
+      try {
+        const response = await fetch(
+          `https://braza-imoveis-api.azurewebsites.net/properties/${id}`,
+          { mode: "cors" }
+        );
+        const data = await response.json();
+        setImovel(data);
+      } catch (error) {
+        console.error("Erro ao buscar imóveis:", error);
+      }
+    };
+    fetchImoveis();
+  }, [id]);
 
   const goToPreviousImage = () => {
     if (currentImageIndex > 0) {
@@ -16,7 +31,7 @@ const ResultDetailPage = () => {
   };
 
   const goToNextImage = () => {
-    if (currentImageIndex < propertyImages.length - 1) {
+    if (currentImageIndex < imovel.images.length - 1) {
       setCurrentImageIndex(currentImageIndex + 1);
     }
   };
@@ -25,17 +40,18 @@ const ResultDetailPage = () => {
     <div className={classes.resultDetailPage}>
       <div className={classes.imageWrapper}>
         <div className={classes.imageContainer}>
-          {propertyImages.map((imagem, index) => (
-            <img
-              key={index}
-              src={"https://www.imobiliariaconceitto.com.br/" + imagem.url}
-              alt={description}
-              className={classes.currentImage}
-              style={{
-                display: index === currentImageIndex ? "block" : "none",
-              }}
-            />
-          ))}
+          {imovel.images &&
+            imovel.images.map((imagem, index) => (
+              <img
+                key={index}
+                src={imagem.url}
+                alt={imovel.description}
+                className={classes.currentImage}
+                style={{
+                  display: index === currentImageIndex ? "block" : "none",
+                }}
+              />
+            ))}
         </div>
         <button
           className={`${classes.navigationButton} ${classes.left}`}
@@ -49,9 +65,7 @@ const ResultDetailPage = () => {
           onClick={goToNextImage}
           style={{
             display:
-              currentImageIndex === propertyImages.length - 1
-                ? "none"
-                : "block",
+              currentImageIndex === imovel.images - 1 ? "none" : "block",
           }}
         >
           &gt;
@@ -59,11 +73,10 @@ const ResultDetailPage = () => {
       </div>
 
       <div className={classes.detailsContainer}>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <p>{details}</p>
-        <h3>{price}</h3>
-        
+        <h2>{imovel.title}</h2>
+        <p>{imovel.description}</p>
+        <p>{imovel.details}</p>
+        <h3>{imovel.price}</h3>
 
         <p>
           <Link to=".." relative="path">
@@ -71,9 +84,9 @@ const ResultDetailPage = () => {
           </Link>
         </p>
 
-        
-          <Link to={url} target="_blank" className={classes.urlButton}>Ir para o anúncio</Link>
-       
+        <Link to={imovel.url} target="_blank" className={classes.urlButton}>
+          Ir para o anúncio
+        </Link>
       </div>
     </div>
   );

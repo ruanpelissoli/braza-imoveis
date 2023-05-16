@@ -1,38 +1,77 @@
 // ResultItem.js
-import React from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./ResultItem.module.css";
 
 const ResultItem = ({
   id,
-  realStateId,
-  url,
   title,
   price,
   description,
-  details,
   propertyImages,
+  bedrooms,
+  bathrooms,
+  garageSpaces,
+  squareFoot,
 }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const goToPreviousImage = () => {
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex(currentImageIndex - 1);
+    }
+  };
+
+  const goToNextImage = () => {
+    if (currentImageIndex < propertyImages.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1);
+    }
+  };
+
   return (
     <li className={classes.modalcontent}>
-      <Link
-        to={`/results/${id}`} // Defina a rota com o ID como parte do caminho
-        state={{
-          id,
-          realStateId,
-          url,
-          title,
-          price,
-          description,
-          details,
-          propertyImages,
-        }} // Passe o objeto de estado com os dados do resultado diretamente
-      >
-        <h2>{title}</h2>
-        <p>{description}</p>
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <div className={classes.itemImageWrapper}>
+        <Link to={`/results/${id}`} className={classes.itemImage}>
+          {propertyImages.map((imagem, index) => (
+            <img
+              key={index}
+              src={imagem.url}
+              alt={description}
+              className={classes.currentImage}
+              style={{
+                display: index === currentImageIndex ? "block" : "none",
+              }}
+            />
+          ))}
+        </Link>
 
-        <h3>{price}</h3>
-      </Link>
+        <button
+          className={`${classes.navigationButton} ${classes.left}`}
+          onClick={goToPreviousImage}
+          style={{ display: currentImageIndex === 0 ? "none" : "block" }}
+        >
+          &lt;
+        </button>
+        <button
+          className={`${classes.navigationButton} ${classes.right}`}
+          onClick={goToNextImage}
+          style={{
+            display:
+              currentImageIndex === propertyImages.length - 1
+                ? "none"
+                : "block",
+          }}
+        >
+          &gt;
+        </button>
+      </div>
+      <div className={classes.details}>
+        Quartos: {bedrooms} - Banheiros: {bathrooms} - Garagem: {garageSpaces}{" "}
+        Tamanho: {squareFoot}m²
+      </div>
+      <h3>{price}</h3>
     </li>
   );
 };

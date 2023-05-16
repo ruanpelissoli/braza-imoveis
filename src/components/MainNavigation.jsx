@@ -38,16 +38,7 @@ const MainNavigation = () => {
               Condomínios
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/favorites"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              Favoritos
-            </NavLink>
-          </li>
+          
           <li>
             <NavLink
               to="/support"

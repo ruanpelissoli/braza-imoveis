@@ -1,48 +1,114 @@
 .modalcontent {
-    flex-basis: 26%;
-    margin: 10px 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: black 1px solid;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.295);
-    height: 300px;
-  }
+  flex-basis: 26%;
+  margin: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: black 1px solid;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.295);
+  height: 500px;
+  border-radius: 10px;
+}
 
-  .modalcontent a {
-    text-decoration: none;
-    width: 100%;
-  }
-  
-  /* Estilo para a imagem */
-  .modalcontent img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  /* Estilo para o título */
-  .modalcontent h2 {
-    margin-top: 0;
-    font-size: 16px; /* Reduzir o tamanho da fonte do título */
-    text-align: center;
-    text-transform: uppercase;
-    color: black;
-  }
-  
-  .modalcontent h3 {
-    margin-bottom: 0;
-    font-size: 14px; /* Reduzir o tamanho da fonte do sub-título */
-    color: rgb(15, 199, 15);
-    text-decoration: none;
-  }
-  
-  /* Estilo para a descrição */
-  .modalcontent p {
-    margin: 0;
-    font-size: 14px;
-    text-align: center;
-    max-height: 60px; /* Reduzir a altura máxima da descrição */
-    overflow: hidden;
-    color: #505050;
-  }
-  
+.modalcontent a {
+  text-decoration: none;
+  width: 100%;
+}
+
+/* Estilo para a imagem */
+
+/* Estilo para o título */
+.modalcontent h2 {
+  margin-top: 0;
+  font-size: 21px; /* Reduzir o tamanho da fonte do título */
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+}
+
+.modalcontent h3 {
+  margin-bottom: 0;
+  font-size: 22px; /* Reduzir o tamanho da fonte do sub-título */
+  color: rgb(15, 199, 15);
+  text-decoration: none;
+}
+
+/* Estilo para a descrição */
+.modalcontent p {
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+  max-height: 100px; /* Reduzir a altura máxima da descrição */
+  overflow-y: scroll;
+  color: #505050;
+}
+
+.itemImageWrapper {
+  margin: auto;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 280px;
+  width: 100%;
+}
+
+.itemImage {
+  max-width: 350px;
+  max-height: 280px;
+}
+
+.currentImage {
+  max-width: 350px;
+  max-height: 280px;
+  object-fit: contain;
+  margin: auto; /*centraliza horizontalmente*/
+  display: block; /*centraliza verticalmente*/
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.295);
+}
+
+.navigationButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px 16px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.previousButton {
+  left: 0;
+}
+
+.nextButton {
+  right: 0;
+}
+
+.navigationButton:hover {
+  opacity: 0.5;
+}
+
+.navigationButton.left {
+  left: 0;
+}
+
+.navigationButton.right {
+  right: 0;
+}
+
+.details {
+  border: 1px solid black;
+  margin-left: 45px;
+  margin-right: 45px;
+  border-radius: 10px;
+  background-color: #e0e0e0;
+  font-size: 17px;
+  padding-right: 2px;
+  padding-left: 2px;
+}

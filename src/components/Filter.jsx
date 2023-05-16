@@ -56,7 +56,7 @@ const Filter = () => {
             placeholder="Digite o preço máximo"
           />
 
-          <Link to="/results" className={classes.button}>
+          <Link to="/results" className={classes.filterButton}>
             Buscar
           </Link>
         </div>

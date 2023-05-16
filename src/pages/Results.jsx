@@ -1,70 +1,41 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setImoveis } from "../store/imoveisActions";
 import classes from "./Results.module.css";
-import ResultItem from "../components/ResultItem"; // Importe o componente filho
+import ResultItem from "../components/ResultItem.jsx";
 
 const Results = () => {
-  const [imoveis, setImoveis] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchImoveis = async () => {
-      try {
-        const response = await fetch(
-          "https://braza-imoveis-api.azurewebsites.net/properties",
-          { mode: "cors" }
-        );
-        const data = await response.json();
-        setImoveis(data);
-      } catch (error) {
-        console.error("Erro ao buscar imóveis:", error);
-      }
-    };
-    fetchImoveis();
-  }, []);
+    dispatch(setImoveis());
+  }, [dispatch]);
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const itemsPerPage = 9;
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = imoveis.slice(indexOfFirstItem, indexOfLastItem);
+  const imoveis = useSelector((state) => state.imoveis);
 
   return (
-    <>
+    <div>
       <h1>Lista de Imóveis</h1>
       <ul className={classes.resultul}>
-        {currentItems.map((result) => (
+        {imoveis && imoveis.map((result) => (
           <ResultItem
             key={result.id}
-            id={result.id} 
+            id={result.id}
             realStateId={result.realStateId}
             url={result.url}
-            title={result.title} 
-            price={result.price} 
-            description={result.description} 
+            title={result.title}
+            price={result.price}
+            description={result.description}
             details={result.details}
             propertyImages={result.propertyImages}
+            bedrooms={result.filterBedrooms}
+            bathrooms={result.filterBathrooms}
+            garageSpaces={result.filterGarageSpaces}
+            squareFoot={result.filterSquareFoot}
           />
         ))}
       </ul>
-
-      <div>
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Anterior
-        </button>
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={indexOfLastItem >= imoveis.length}
-        >
-          Próximo
-        </button>
-      </div>
-    </>
+    </div>
   );
 };
 
