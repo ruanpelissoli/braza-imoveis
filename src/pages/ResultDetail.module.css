@@ -76,6 +76,7 @@
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.295);
   border-radius: 4px;
   padding: 15px 10px;
+  height: fit-content;
 }
 
 .detailsContainer h2 {
@@ -89,9 +90,10 @@
 }
 
 .detailsContainer p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 1rem;
   text-align: justify;
+  text-indent: 10px;
 }
 
 .detailsContainer a {
@@ -109,6 +111,24 @@
 
 .urlButton:hover{
     background-color: rgb(51, 51, 51);
+  }
+
+  .resultDetailTable {
+    width: 80%;
+    margin: 0 auto;
+    
+    padding: 2px;
+    table-layout: fixed;
+  }
+
+  .resultDetailPage th {
+    width: 25%;
+    background-color: #c5c4c4;
+  }
+
+  .resultDetailPage td {
+    width: 25%;
+    background-color: white;
   }
 
 

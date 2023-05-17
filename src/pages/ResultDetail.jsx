@@ -6,7 +6,6 @@ const ResultDetailPage = () => {
   const { id } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imovel, setImovel] = useState([]);
-  
 
   useEffect(() => {
     const fetchImoveis = async () => {
@@ -64,8 +63,7 @@ const ResultDetailPage = () => {
           className={`${classes.navigationButton} ${classes.right}`}
           onClick={goToNextImage}
           style={{
-            display:
-              currentImageIndex === imovel.images - 1 ? "none" : "block",
+            display: currentImageIndex === imovel.images - 1 ? "none" : "block",
           }}
         >
           &gt;
@@ -77,6 +75,21 @@ const ResultDetailPage = () => {
         <p>{imovel.description}</p>
         <p>{imovel.details}</p>
         <h3>{imovel.price}</h3>
+
+        <table className={classes.resultDetailTable}>
+          <tr>
+            <th>Quartos</th>
+            <th>Banheiros</th>
+            <th>Vagas na Garagem</th>
+            <th>Metros Quadrados</th>
+          </tr>
+          <tr>
+            <td>{imovel.filterBedrooms}</td>
+            <td>{imovel.filterBathrooms}</td>
+            <td>{imovel.filterGarageSpaces}</td>
+            <td>{imovel.filterSquareFoot}m²</td>
+          </tr>
+        </table>
 
         <p>
           <Link to=".." relative="path">

@@ -33,7 +33,7 @@ const ResultItem = ({
       <h2>{title}</h2>
       <p>{description}</p>
       <div className={classes.itemImageWrapper}>
-        <Link to={`/results/${id}`} className={classes.itemImage}>
+        <div className={classes.itemImage}>
           {propertyImages.map((imagem, index) => (
             <img
               key={index}
@@ -45,7 +45,7 @@ const ResultItem = ({
               }}
             />
           ))}
-        </Link>
+        </div>
 
         <button
           className={`${classes.navigationButton} ${classes.left}`}
@@ -71,6 +71,11 @@ const ResultItem = ({
         Quartos: {bedrooms} - Banheiros: {bathrooms} - Garagem: {garageSpaces}{" "}
         Tamanho: {squareFoot}m²
       </div>
+      <div className={classes.moreDetailsContainer}>
+      <Link to={`/results/${id}`} target="_blank" className={classes.moreDetails}>
+          Mais Detalhes
+        </Link>
+        </div>
       <h3>{price}</h3>
     </li>
   );
