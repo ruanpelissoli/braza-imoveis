@@ -3,6 +3,14 @@ import thunk from "redux-thunk";
 
 const initialState = {
   imoveis: null,
+  filterOptions: {
+    bedrooms: "",
+    bathrooms: "",
+    garageSpace: "",
+    squareFoot: "",
+    precoMin: "",
+    precoMax: "",
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +19,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         imoveis: action.payload,
+      };
+    case "SET_FILTER_OPTIONS":
+      return {
+        ...state,
+        filterOptions: action.payload,
       };
     default:
       return state;

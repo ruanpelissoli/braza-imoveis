@@ -43,7 +43,7 @@ const ResultDetailPage = () => {
             imovel.images.map((imagem, index) => (
               <img
                 key={index}
-                src={imagem.url}
+                src={imagem}
                 alt={imovel.description}
                 className={classes.currentImage}
                 style={{
@@ -63,7 +63,7 @@ const ResultDetailPage = () => {
           className={`${classes.navigationButton} ${classes.right}`}
           onClick={goToNextImage}
           style={{
-            display: currentImageIndex === imovel.images - 1 ? "none" : "block",
+            display: currentImageIndex === (imovel.images?.length || 0) - 1 ? "none" : "block",
           }}
         >
           &gt;
@@ -77,18 +77,20 @@ const ResultDetailPage = () => {
         <h3>{imovel.price}</h3>
 
         <table className={classes.resultDetailTable}>
-          <tr>
-            <th>Quartos</th>
-            <th>Banheiros</th>
-            <th>Vagas na Garagem</th>
-            <th>Metros Quadrados</th>
-          </tr>
-          <tr>
-            <td>{imovel.filterBedrooms}</td>
-            <td>{imovel.filterBathrooms}</td>
-            <td>{imovel.filterGarageSpaces}</td>
-            <td>{imovel.filterSquareFoot}m²</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>Quartos</th>
+              <th>Banheiros</th>
+              <th>Vagas na Garagem</th>
+              <th>Metros Quadrados</th>
+            </tr>
+            <tr>
+              <td>{imovel.filterBedrooms}</td>
+              <td>{imovel.filterBathrooms}</td>
+              <td>{imovel.filterGarageSpaces}</td>
+              <td>{imovel.filterSquareFoot}m²</td>
+            </tr>
+          </tbody>
         </table>
 
         <p>

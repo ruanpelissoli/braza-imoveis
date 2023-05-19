@@ -15,6 +15,7 @@ const ResultItem = ({
   squareFoot,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
 
   const goToPreviousImage = () => {
     if (currentImageIndex > 0) {
@@ -37,7 +38,7 @@ const ResultItem = ({
           {propertyImages.map((imagem, index) => (
             <img
               key={index}
-              src={imagem.url}
+              src={imagem}
               alt={description}
               className={classes.currentImage}
               style={{
