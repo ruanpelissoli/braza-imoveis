@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setImoveis } from "../store/imoveisActions";
 import classes from "./Results.module.css";
@@ -7,27 +7,28 @@ import { applyFilter } from "../store/filterActions";
 
 const Results = () => {
   const dispatch = useDispatch();
-
+  const imoveis = useSelector((state) => state.imoveis);
+  const [atualImoveis, setAtualImoveis] = useState(imoveis);
+  
   useEffect(() => {
     dispatch(setImoveis());
   }, [dispatch]);
 
-  const imoveis = useSelector((state) => state.imoveis);
   const filterOptions = useSelector((state) => state.filterOptions);
 
-  let filteredImoveis = [];
-  if (imoveis) {
-    filteredImoveis = applyFilter(imoveis, filterOptions);
-  }
+  useEffect(() => {
+    const filteredImoveis = applyFilter(imoveis, filterOptions);
+    setAtualImoveis(filteredImoveis);
+  }, [imoveis, filterOptions]);
 
-  console.log(filteredImoveis);
+  
 
   return (
     <div>
       <h1>Lista de Imóveis</h1>
       <ul className={classes.resultul}>
-        {filteredImoveis &&
-          filteredImoveis.map((result) => (
+        {atualImoveis &&
+          atualImoveis.map((result) => (
             <ResultItem
               key={result.id}
               id={result.id}

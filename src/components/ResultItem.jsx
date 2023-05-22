@@ -70,7 +70,7 @@ const ResultItem = ({
       </div>
       <div className={classes.details}>
         Quartos: {bedrooms} - Banheiros: {bathrooms} - Garagem: {garageSpaces}{" "}
-        Tamanho: {squareFoot}m²
+        Tamanho: {squareFoot ? `${squareFoot}m²` : "Não Informado"}
       </div>
       <div className={classes.moreDetailsContainer}>
       <Link to={`/results/${id}`} target="_blank" className={classes.moreDetails}>

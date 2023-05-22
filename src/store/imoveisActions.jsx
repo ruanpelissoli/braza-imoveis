@@ -1,7 +1,7 @@
 export const setImoveis = () => async (dispatch) => {
     try {
       const response = await fetch(
-        `https://braza-imoveis-api.azurewebsites.net/properties?page=3&size=12`,
+        `https://braza-imoveis-api.azurewebsites.net/properties?page=1&size=12`,
         { mode: "cors" }
       );
       const data = await response.json();
@@ -20,6 +20,7 @@ export const setImoveis = () => async (dispatch) => {
       squareFoot: "",
       precoMin: "",
       precoMax: "",
+      type: "",
     },
   };
   

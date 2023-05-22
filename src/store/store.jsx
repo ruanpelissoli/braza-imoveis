@@ -10,6 +10,7 @@ const initialState = {
     squareFoot: "",
     precoMin: "",
     precoMax: "",
+    type: "",
   },
 };
 
@@ -24,6 +25,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         filterOptions: action.payload,
+      };
+    case "RESET_FILTER_OPTIONS":
+      return {
+        ...state,
+        filterOptions: {
+          bedrooms: "",
+          bathrooms: "",
+          garageSpace: "",
+          squareFoot: "",
+          precoMin: "",
+          precoMax: "",
+          type: "",
+        },
       };
     default:
       return state;

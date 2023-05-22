@@ -1,12 +1,16 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilterOptions } from "../store/filterActions";
+import { setFilterOptions, resetFilterOptions } from "../store/filterActions";
 import classes from "./Filter.module.css";
-
 
 const Filter = () => {
   const dispatch = useDispatch();
   const filterOptions = useSelector((state) => state.filterOptions);
+
+  useEffect(() => {
+    dispatch(resetFilterOptions());
+  }, [dispatch]);
 
   const handleFilterChange = (event) => {
     const { id, value } = event.target;
@@ -18,13 +22,17 @@ const Filter = () => {
     );
   };
 
-  
-
   return (
     <>
       <div className={classes.container}>
         <div className={classes.filter}>
-          <label for="bedrooms">Quartos:</label>
+          <label htmlFor="type">Tipo:</label>
+          <select id="type" onChange={handleFilterChange}>
+            <option value="">Qualquer</option>
+            <option value="VENDA">Venda</option>
+            <option value="TEMPORADA">Aluguel</option>
+          </select>
+          <label htmlFor="bedrooms">Quartos:</label>
           <select id="bedrooms" onChange={handleFilterChange}>
             <option value="">Qualquer</option>
             <option value="1">1 Quarto</option>
@@ -33,7 +41,7 @@ const Filter = () => {
             <option value="4">4 Quartos</option>
             <option value="5">5 ou mais Quartos</option>
           </select>
-          <label for="bathrooms">Banheiros:</label>
+          <label htmlFor="bathrooms">Banheiros:</label>
           <select id="bathrooms" onChange={handleFilterChange}>
             <option value="">Qualquer</option>
             <option value="1">1 Banheiro</option>
@@ -42,7 +50,7 @@ const Filter = () => {
             <option value="4">4 Banheiros</option>
             <option value="5">5 ou mais Banheiros</option>
           </select>
-          <label for="garageSpace">Garagem:</label>
+          <label htmlFor="garageSpace">Garagem:</label>
           <select id="garageSpace" onChange={handleFilterChange}>
             <option value="">Qualquer</option>
             <option value="0">Sem Garagem</option>
@@ -52,15 +60,16 @@ const Filter = () => {
             <option value="4">4 Vagas</option>
             <option value="5">5 ou mais Vagas</option>
           </select>
-          <label for="squareFoot">Metros Quadrados:</label>
-          <input
-            type="number"
-            id="squareFoot"
-            min="0"
-            placeholder="Digite a área em m²"
-            onChange={handleFilterChange}
-          />
-          <label for="precoMin">Preço Mínimo:</label>
+          <label htmlFor="squareFoot">Metros Quadrados:</label>
+          <select id="squareFoot" onChange={handleFilterChange}>
+            <option value="">Selecione</option>
+            <option value="0-50">Até 50m²</option>
+            <option value="50-150">Entre 50m² e 150m²</option>
+            <option value="150-300">Entre 150m² e 300m²</option>
+            <option value="300-500">Entre 300m² e 500m²</option>
+            <option value="500+">Acima de 500m²</option>
+          </select>
+          <label htmlFor="precoMin">Preço Mínimo:</label>
           <input
             type="number"
             id="precoMin"
@@ -68,7 +77,7 @@ const Filter = () => {
             placeholder="Digite o preço mínimo"
             onChange={handleFilterChange}
           />
-          <label for="precoMax">Preço Máximo:</label>
+          <label htmlFor="precoMax">Preço Máximo:</label>
           <input
             type="number"
             id="precoMax"
