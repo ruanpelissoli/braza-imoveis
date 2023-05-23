@@ -4,15 +4,17 @@ import { setImoveis } from "../store/imoveisActions";
 import classes from "./Results.module.css";
 import ResultItem from "../components/ResultItem.jsx";
 import { applyFilter } from "../store/filterActions";
+import Filter from "../components/Filter";
 
 const Results = () => {
   const dispatch = useDispatch();
   const imoveis = useSelector((state) => state.imoveis);
   const [atualImoveis, setAtualImoveis] = useState(imoveis);
-  
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
-    dispatch(setImoveis());
-  }, [dispatch]);
+    dispatch(setImoveis(currentPage));
+  }, [dispatch, currentPage]);
 
   const filterOptions = useSelector((state) => state.filterOptions);
 
@@ -21,11 +23,13 @@ const Results = () => {
     setAtualImoveis(filteredImoveis);
   }, [imoveis, filterOptions]);
 
-  
+  const handleShowMoreClick = () => {
+    setCurrentPage(currentPage + 1);
+  };
 
   return (
     <div>
-      <h1>Lista de Imóveis</h1>
+      <Filter />
       <ul className={classes.resultul}>
         {atualImoveis &&
           atualImoveis.map((result) => (
@@ -46,8 +50,8 @@ const Results = () => {
             />
           ))}
       </ul>
+      <button onClick={handleShowMoreClick}>Ver mais</button>
     </div>
-    
   );
 };
 

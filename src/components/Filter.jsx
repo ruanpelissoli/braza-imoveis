@@ -1,12 +1,15 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterOptions, resetFilterOptions } from "../store/filterActions";
+import { setImoveis } from "../store/imoveisActions";
 import classes from "./Filter.module.css";
 
 const Filter = () => {
   const dispatch = useDispatch();
   const filterOptions = useSelector((state) => state.filterOptions);
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     dispatch(resetFilterOptions());
@@ -20,6 +23,12 @@ const Filter = () => {
         [id]: value,
       })
     );
+  };
+
+  const handleFilterSubmit = () => {
+    dispatch(setFilterOptions(filterOptions));
+    dispatch(setImoveis(1)); // Define a página inicial como 1 ao realizar a busca
+    navigate("/results");
   };
 
   return (
@@ -86,9 +95,9 @@ const Filter = () => {
             onChange={handleFilterChange}
           />
 
-          <Link to="/results" className={classes.filterButton}>
+          <button className={classes.filterButton} onClick={handleFilterSubmit}>
             Buscar
-          </Link>
+          </button>
         </div>
       </div>
     </>

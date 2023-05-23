@@ -25,7 +25,7 @@ export const applyFilter = (imoveis, filterOptions) => {
 
     console.log(imovel.filterType);
 
-    // Verifica cada critério de filtro
+    
     if (type !== "" && imovel.filterType !== type) {
       return false;
     }
@@ -47,7 +47,7 @@ export const applyFilter = (imoveis, filterOptions) => {
       const imovelSquareFoot = imovel.filterSquareFoot;
 
       if (min && max) {
-        // Faixa de valores específica
+        
         if (
           imovelSquareFoot < parseInt(min) ||
           imovelSquareFoot > parseInt(max)
@@ -55,13 +55,13 @@ export const applyFilter = (imoveis, filterOptions) => {
           return false;
         }
       } else if (min) {
-        // A partir de um determinado valor
+        
         const minValue = parseInt(min);
         if (imovelSquareFoot < minValue) {
           return false;
         }
       } else if (max) {
-        // Até um determinado valor
+        
         const maxValue = parseInt(max);
         if (imovelSquareFoot > maxValue) {
           return false;
@@ -75,7 +75,7 @@ export const applyFilter = (imoveis, filterOptions) => {
       return false;
     }
 
-    // Retorna true se o imóvel atender a todos os critérios de filtro
+    
     return true;
   });
 
