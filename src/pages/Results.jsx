@@ -9,8 +9,8 @@ import Filter from "../components/Filter";
 const Results = () => {
   const dispatch = useDispatch();
   const imoveis = useSelector((state) => state.imoveis);
-  const [atualImoveis, setAtualImoveis] = useState(imoveis);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [atualImoveis, setAtualImoveis] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     dispatch(setImoveis(currentPage));
@@ -20,10 +20,14 @@ const Results = () => {
 
   useEffect(() => {
     const filteredImoveis = applyFilter(imoveis, filterOptions);
-    setAtualImoveis(filteredImoveis);
+    setAtualImoveis(filteredImoveis.slice(0, 12)); // Carrega os primeiros 12 imóveis
   }, [imoveis, filterOptions]);
 
   const handleShowMoreClick = () => {
+    const startIndex = (currentPage + 1) * 12; // Calcula o índice inicial para os próximos 12 imóveis
+    const endIndex = startIndex + 12; // Calcula o índice final para os próximos 12 imóveis
+    const nextImoveis = applyFilter(imoveis, filterOptions).slice(startIndex, endIndex); // Obtém os próximos 12 imóveis
+    setAtualImoveis((prevImoveis) => [...prevImoveis, ...nextImoveis]); // Adiciona os próximos imóveis à lista atual
     setCurrentPage(currentPage + 1);
   };
 

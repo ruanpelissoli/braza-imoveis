@@ -12,6 +12,9 @@ export const setFilterOptions = (filterOptions) => {
 };
 
 export const applyFilter = (imoveis, filterOptions) => {
+  if (!imoveis) {
+    return [];
+  }
   const filteredImoveis = imoveis.filter((imovel) => {
     const {
       type,
@@ -22,9 +25,6 @@ export const applyFilter = (imoveis, filterOptions) => {
       precoMin,
       precoMax,
     } = filterOptions;
-
-    console.log(imovel.filterType);
-
     
     if (type !== "" && imovel.filterType !== type) {
       return false;
@@ -74,8 +74,7 @@ export const applyFilter = (imoveis, filterOptions) => {
     if (precoMax !== "" && imovel.filterCost > parseInt(precoMax)) {
       return false;
     }
-
-    
+ 
     return true;
   });
 

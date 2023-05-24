@@ -4,13 +4,13 @@ import thunk from "redux-thunk";
 const initialState = {
   imoveis: null,
   filterOptions: {
+    type: "",
     bedrooms: "",
     bathrooms: "",
     garageSpace: "",
     squareFoot: "",
     precoMin: "",
     precoMax: "",
-    type: "",
   },
 };
 
@@ -30,13 +30,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         filterOptions: {
+          type: "",
           bedrooms: "",
           bathrooms: "",
           garageSpace: "",
           squareFoot: "",
           precoMin: "",
           precoMax: "",
-          type: "",
         },
       };
     default:

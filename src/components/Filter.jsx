@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilterOptions, resetFilterOptions } from "../store/filterActions";
+import { resetFilterOptions } from "../store/filterActions";
 import { setImoveis } from "../store/imoveisActions";
 import classes from "./Filter.module.css";
 
@@ -9,7 +9,7 @@ const Filter = () => {
   const dispatch = useDispatch();
   const filterOptions = useSelector((state) => state.filterOptions);
   const navigate = useNavigate();
-  
+  const [filterValues, setFilterValues] = useState(filterOptions);
 
   useEffect(() => {
     dispatch(resetFilterOptions());
@@ -17,19 +17,18 @@ const Filter = () => {
 
   const handleFilterChange = (event) => {
     const { id, value } = event.target;
-    dispatch(
-      setFilterOptions({
-        ...filterOptions,
-        [id]: value,
-      })
-    );
+    setFilterValues((prevFilterValues) => ({
+      ...prevFilterValues,
+      [id]: value,
+    }));
   };
 
   const handleFilterSubmit = () => {
-    dispatch(setFilterOptions(filterOptions));
-    dispatch(setImoveis(1)); // Define a página inicial como 1 ao realizar a busca
+    dispatch(setImoveis(0, filterValues)); // Atualiza os resultados com os valores de filterValues
     navigate("/results");
   };
+
+  console.log(filterValues);
 
   return (
     <>
@@ -71,7 +70,7 @@ const Filter = () => {
           </select>
           <label htmlFor="squareFoot">Metros Quadrados:</label>
           <select id="squareFoot" onChange={handleFilterChange}>
-            <option value="">Selecione</option>
+            <option value="">Qualquer</option>
             <option value="0-50">Até 50m²</option>
             <option value="50-150">Entre 50m² e 150m²</option>
             <option value="150-300">Entre 150m² e 300m²</option>
