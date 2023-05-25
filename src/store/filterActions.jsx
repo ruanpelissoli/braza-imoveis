@@ -21,15 +21,17 @@ export const applyFilter = (imoveis, filterOptions) => {
       bedrooms,
       bathrooms,
       garageSpace,
-      squareFoot,
-      precoMin,
-      precoMax,
+      minSquareFoot,
+      maxSquareFoot,
+      minPrice,
+      maxPrice,
+      stateId,
+      cityId,
     } = filterOptions;
     
     if (type !== "" && imovel.filterType !== type) {
       return false;
     }
-
     if (bedrooms !== "" && imovel.filterBedrooms !== parseInt(bedrooms)) {
       return false;
     }
@@ -42,36 +44,22 @@ export const applyFilter = (imoveis, filterOptions) => {
     ) {
       return false;
     }
-    if (squareFoot !== "") {
-      const [min, max] = squareFoot.split("-");
-      const imovelSquareFoot = imovel.filterSquareFoot;
-
-      if (min && max) {
-        
-        if (
-          imovelSquareFoot < parseInt(min) ||
-          imovelSquareFoot > parseInt(max)
-        ) {
-          return false;
-        }
-      } else if (min) {
-        
-        const minValue = parseInt(min);
-        if (imovelSquareFoot < minValue) {
-          return false;
-        }
-      } else if (max) {
-        
-        const maxValue = parseInt(max);
-        if (imovelSquareFoot > maxValue) {
-          return false;
-        }
-      }
-    }
-    if (precoMin !== "" && imovel.filterCost < parseInt(precoMin)) {
+    if (minSquareFoot !== "" && imovel.filterSquareFoot < parseInt(minSquareFoot)) {
       return false;
     }
-    if (precoMax !== "" && imovel.filterCost > parseInt(precoMax)) {
+    if (maxSquareFoot !== "" && imovel.filterSquareFoot > parseInt(maxSquareFoot)) {
+      return false;
+    }
+    if (minPrice !== "" && imovel.filterCost < parseInt(minPrice)) {
+      return false;
+    }
+    if (maxPrice !== "" && imovel.filterCost > parseInt(maxPrice)) {
+      return false;
+    }
+    if (stateId !== "" && imovel.state !== stateId) {
+      return false;
+    }
+    if (cityId !== "" && imovel.city !== cityId) {
       return false;
     }
  

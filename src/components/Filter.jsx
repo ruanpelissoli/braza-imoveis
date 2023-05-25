@@ -45,7 +45,7 @@ const Filter = () => {
   const handleFilterChange = (event) => {
     const { id, value } = event.target;
 
-    if (id === "state") {
+    if (id === "stateId") {
       setFilterValues((prevFilterValues) => ({
         ...prevFilterValues,
         state: value,
@@ -77,12 +77,16 @@ const Filter = () => {
     <>
       <div className={classes.container}>
         <div className={classes.filter}>
+          <div className={classes.filterRow}>
           <label htmlFor="type">Tipo:</label>
           <select id="type" onChange={handleFilterChange}>
             <option value="">Qualquer</option>
             <option value="VENDA">Venda</option>
-            <option value="TEMPORADA">Aluguel</option>
+            <option value="TEMPORADA">Temporada</option>
+            <option value="ALUGUEL">Aluguel</option>
           </select>
+          </div>
+          <div className={classes.filterRow}>
           <label htmlFor="bedrooms">Quartos:</label>
           <select id="bedrooms" onChange={handleFilterChange}>
             <option value="">Qualquer</option>
@@ -92,6 +96,8 @@ const Filter = () => {
             <option value="4">4 Quartos</option>
             <option value="5">5 ou mais Quartos</option>
           </select>
+          </div>
+          <div className={classes.filterRow}>
           <label htmlFor="bathrooms">Banheiros:</label>
           <select id="bathrooms" onChange={handleFilterChange}>
             <option value="">Qualquer</option>
@@ -101,6 +107,8 @@ const Filter = () => {
             <option value="4">4 Banheiros</option>
             <option value="5">5 ou mais Banheiros</option>
           </select>
+          </div>
+          <div className={classes.filterRow}>
           <label htmlFor="garageSpace">Garagem:</label>
           <select id="garageSpace" onChange={handleFilterChange}>
             <option value="">Qualquer</option>
@@ -111,34 +119,44 @@ const Filter = () => {
             <option value="4">4 Vagas</option>
             <option value="5">5 ou mais Vagas</option>
           </select>
-          <label htmlFor="squareFoot">Metros Quadrados:</label>
-          <select id="squareFoot" onChange={handleFilterChange}>
-            <option value="">Qualquer</option>
-            <option value="0-50">Até 50m²</option>
-            <option value="50-150">Entre 50m² e 150m²</option>
-            <option value="150-300">Entre 150m² e 300m²</option>
-            <option value="300-500">Entre 300m² e 500m²</option>
-            <option value="500+">Acima de 500m²</option>
-          </select>
-          <label htmlFor="precoMin">Preço Mínimo:</label>
+          </div>
+          <div className={classes.filterRow}>
+          <label htmlFor="minSquareFoot">m² Mínimo:</label>
           <input
             type="number"
-            id="precoMin"
+            id="minSquareFoot"
+            min="0"
+            placeholder="Digite o m² mínimo"
+            onChange={handleFilterChange}
+          />
+          </div>
+          <label htmlFor="maxSquareFoot">m² Máximo:</label>
+          <input
+            type="number"
+            id="maxSquareFoot"
+            min="0"
+            placeholder="Digite o m² máximo"
+            onChange={handleFilterChange}
+          />
+          <label htmlFor="minPrice">Preço Mínimo:</label>
+          <input
+            type="number"
+            id="minPrice"
             min="0"
             placeholder="Digite o preço mínimo"
             onChange={handleFilterChange}
           />
-          <label htmlFor="precoMax">Preço Máximo:</label>
+          <label htmlFor="maxPrice">Preço Máximo:</label>
           <input
             type="number"
-            id="precoMax"
+            id="maxPrice"
             min="0"
             placeholder="Digite o preço máximo"
             onChange={handleFilterChange}
           />
 
-          <label htmlFor="state">Estado:</label>
-          <select id="state" onChange={handleFilterChange}>
+          <label htmlFor="stateId">Estado:</label>
+          <select id="stateId" onChange={handleFilterChange}>
             <option value="">Qualquer</option>
             {stateOptions.map((state) => (
               <option key={state.id} value={state.id}>
@@ -149,8 +167,8 @@ const Filter = () => {
 
           {cityOptions.length > 0 && (
             <>
-              <label htmlFor="city">Cidade:</label>
-              <select id="city" onChange={handleFilterChange}>
+              <label htmlFor="cityId">Cidade:</label>
+              <select id="cityId" onChange={handleFilterChange}>
                 <option value="">Qualquer</option>
                 {cityOptions.map((city) => (
                   <option key={city.id} value={city.id}>

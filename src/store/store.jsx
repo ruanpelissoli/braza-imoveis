@@ -8,9 +8,12 @@ const initialState = {
     bedrooms: "",
     bathrooms: "",
     garageSpace: "",
-    squareFoot: "",
-    precoMin: "",
-    precoMax: "",
+    minSquareFoot: "",
+    maxSquareFoot: "",
+    minPrice: "",
+    maxPrice: "",
+    stateId: "",
+    cityId: "",
   },
 };
 
@@ -34,9 +37,12 @@ const reducer = (state = initialState, action) => {
           bedrooms: "",
           bathrooms: "",
           garageSpace: "",
-          squareFoot: "",
-          precoMin: "",
-          precoMax: "",
+          minSquareFoot: "",
+          maxSquareFoot: "",
+          minPrice: "",
+          maxPrice: "",
+          stateId: "",
+          cityId: "",
         },
       };
     default:

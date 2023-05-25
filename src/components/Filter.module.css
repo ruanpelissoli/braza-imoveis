@@ -1,22 +1,25 @@
 .container {
   display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
+  justify-content: center;
+  align-items: center;
+  margin: 0 10%;
+  flex-wrap: wrap; /* Adiciona quebra de linha */
 }
 
 .filter {
   width: 100%;
-  max-width: 600px;
+  max-width: 60%;
   padding: 20px;
   background-color: #f2f2f2;
   border: 1px solid #ddd;
   display: flex;
-  flex-wrap: wrap; /* Quebra linha se necessário */
-  gap: 10px; /* Espaçamento entre os elementos */
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between; /* Adiciona espaço entre os elementos */
 }
 
 .filter label {
-  flex-basis: 100%; /* Ocupa todo o espaço disponível em uma linha */
+  flex-basis: 100%;
   margin-bottom: 5px;
 }
 
@@ -24,8 +27,8 @@
 .filter input[type="number"],
 .filter input[type="text"] {
   padding: 5px;
-  flex: 1; /* Ocupa todo o espaço disponível */
-  min-width: 0; /* Permite que os inputs diminuam de tamanho */
+  flex: 1;
+  min-width: 0;
   border: 1px solid #ccc;
 }
 
