@@ -30,12 +30,12 @@ const MainNavigation = () => {
 
           <li>
             <NavLink
-              to="/condominios"
+              to="/cadastro"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
             >
-              Condomínios
+              Cadastrar Imóvel
             </NavLink>
           </li>
           

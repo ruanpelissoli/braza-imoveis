@@ -13,6 +13,7 @@ const ResultItem = ({
   bathrooms,
   garageSpaces,
   squareFoot,
+  realStateName,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   

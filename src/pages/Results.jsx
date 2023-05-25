@@ -11,6 +11,8 @@ const Results = () => {
   const imoveis = useSelector((state) => state.imoveis);
   const [atualImoveis, setAtualImoveis] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [hasMoreResults, setHasMoreResults] = useState(true);
+
 
   useEffect(() => {
     dispatch(setImoveis(currentPage));
@@ -20,15 +22,19 @@ const Results = () => {
 
   useEffect(() => {
     const filteredImoveis = applyFilter(imoveis, filterOptions);
-    setAtualImoveis(filteredImoveis.slice(0, 12)); // Carrega os primeiros 12 imóveis
+    const nextImoveis = filteredImoveis.slice(0, 12);
+    setAtualImoveis(nextImoveis);
+    setHasMoreResults(filteredImoveis.length > 12);
   }, [imoveis, filterOptions]);
 
   const handleShowMoreClick = () => {
-    const startIndex = (currentPage + 1) * 12; // Calcula o índice inicial para os próximos 12 imóveis
-    const endIndex = startIndex + 12; // Calcula o índice final para os próximos 12 imóveis
-    const nextImoveis = applyFilter(imoveis, filterOptions).slice(startIndex, endIndex); // Obtém os próximos 12 imóveis
-    setAtualImoveis((prevImoveis) => [...prevImoveis, ...nextImoveis]); // Adiciona os próximos imóveis à lista atual
+    const startIndex = (currentPage + 1) * 12;
+    const endIndex = startIndex + 12;
+    const filteredImoveis = applyFilter(imoveis, filterOptions);
+    const nextImoveis = filteredImoveis.slice(startIndex, endIndex);
+    setAtualImoveis((prevImoveis) => [...prevImoveis, ...nextImoveis]);
     setCurrentPage(currentPage + 1);
+    setHasMoreResults(nextImoveis.length > 0); 
   };
 
   return (
@@ -51,10 +57,12 @@ const Results = () => {
               bathrooms={result.filterBathrooms}
               garageSpaces={result.filterGarageSpaces}
               squareFoot={result.filterSquareFoot}
+              realStateName={result.realStateName}
             />
           ))}
       </ul>
-      <button onClick={handleShowMoreClick}>Ver mais</button>
+      {!hasMoreResults && <p>Não há mais resultados correspondentes</p>}
+      {hasMoreResults && <button onClick={handleShowMoreClick}>Ver mais</button>}
     </div>
   );
 };

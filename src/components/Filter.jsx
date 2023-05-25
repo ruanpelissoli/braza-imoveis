@@ -10,25 +10,68 @@ const Filter = () => {
   const filterOptions = useSelector((state) => state.filterOptions);
   const navigate = useNavigate();
   const [filterValues, setFilterValues] = useState(filterOptions);
+  const [isLoading, setIsLoading] = useState(false);
+  const [stateOptions, setStateOptions] = useState([]);
+  const [cityOptions, setCityOptions] = useState([]);
 
   useEffect(() => {
     dispatch(resetFilterOptions());
+
+    fetchStateOptions();
   }, [dispatch]);
+
+  const fetchStateOptions = async () => {
+    try {
+      const response = await fetch("https://braza-imoveis-api.azurewebsites.net/states");
+      const data = await response.json();
+
+      setStateOptions(data);
+    } catch (error) {
+      console.error("Erro ao buscar estados:", error);
+    }
+  };
+
+  const fetchCityOptions = async (stateId) => {
+    try {
+      const response = await fetch(`https://braza-imoveis-api.azurewebsites.net/cities/${stateId}`);
+      const data = await response.json();
+
+      setCityOptions(data);
+    } catch (error) {
+      console.error("Erro ao buscar cidades:", error);
+    }
+  };
 
   const handleFilterChange = (event) => {
     const { id, value } = event.target;
-    setFilterValues((prevFilterValues) => ({
-      ...prevFilterValues,
-      [id]: value,
-    }));
+
+    if (id === "state") {
+      setFilterValues((prevFilterValues) => ({
+        ...prevFilterValues,
+        state: value,
+        city: "",
+      }));
+
+      fetchCityOptions(value);
+    } else {
+      setFilterValues((prevFilterValues) => ({
+        ...prevFilterValues,
+        [id]: value,
+      }));
+    }
   };
 
-  const handleFilterSubmit = () => {
-    dispatch(setImoveis(0, filterValues)); // Atualiza os resultados com os valores de filterValues
-    navigate("/results");
+  const handleFilterSubmit = async () => {
+    setIsLoading(true);
+    try {
+      await dispatch(setImoveis(0, filterValues));
+      setIsLoading(false);
+      navigate("/results");
+    } catch (error) {
+      console.error("Erro ao buscar imóveis:", error);
+      setIsLoading(false);
+    }
   };
-
-  console.log(filterValues);
 
   return (
     <>
@@ -94,8 +137,32 @@ const Filter = () => {
             onChange={handleFilterChange}
           />
 
+          <label htmlFor="state">Estado:</label>
+          <select id="state" onChange={handleFilterChange}>
+            <option value="">Qualquer</option>
+            {stateOptions.map((state) => (
+              <option key={state.id} value={state.id}>
+                {state.name}
+              </option>
+            ))}
+          </select>
+
+          {cityOptions.length > 0 && (
+            <>
+              <label htmlFor="city">Cidade:</label>
+              <select id="city" onChange={handleFilterChange}>
+                <option value="">Qualquer</option>
+                {cityOptions.map((city) => (
+                  <option key={city.id} value={city.id}>
+                    {city.name}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
+
           <button className={classes.filterButton} onClick={handleFilterSubmit}>
-            Buscar
+            {isLoading ? "Loading..." : "Buscar"}
           </button>
         </div>
       </div>

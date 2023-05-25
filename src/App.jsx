@@ -5,8 +5,8 @@ import HomePage from "./pages/Home.jsx";
 import Results from "./pages/Results.jsx";
 import RootLayout from "./pages/Root.jsx";
 import ErrorPage from "./pages/Error.jsx";
-import ImobiliariasPage from "./pages/Imobiliarias.jsx";
 import ResultDetailPage from "./pages/ResultDetail.jsx";
+import CadastroPage from "./pages/Cadastro";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         element: <Results />,
       },
       { path: "/results/:id", element: <ResultDetailPage /> },
-      { path: "/imobiliarias", element: <ImobiliariasPage /> },
+      { path: "/cadastro", element: <CadastroPage /> },
     ],
   },
 ]);
