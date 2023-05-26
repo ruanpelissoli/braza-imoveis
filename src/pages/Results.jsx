@@ -46,6 +46,7 @@ const Results = () => {
             <ResultItem
               key={result.id}
               id={result.id}
+              type={result.filterType}
               realStateId={result.realStateId}
               url={result.url}
               title={result.title}

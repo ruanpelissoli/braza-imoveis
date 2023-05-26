@@ -13,7 +13,7 @@ const ResultItem = ({
   bathrooms,
   garageSpaces,
   squareFoot,
-  realStateName,
+  type,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
@@ -71,7 +71,7 @@ const ResultItem = ({
       </div>
       <div className={classes.details}>
         Quartos: {bedrooms} - Banheiros: {bathrooms} - Garagem: {garageSpaces}{" "}
-        Tamanho: {squareFoot ? `${squareFoot}m²` : "Não Informado"}
+        Tamanho: {squareFoot ? `${squareFoot}m²` : "Não Informado"} Tipo: {type}
       </div>
       <div className={classes.moreDetailsContainer}>
       <Link to={`/results/${id}`} target="_blank" className={classes.moreDetails}>

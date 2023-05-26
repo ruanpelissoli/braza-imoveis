@@ -28,7 +28,7 @@ export const applyFilter = (imoveis, filterOptions) => {
       stateId,
       cityId,
     } = filterOptions;
-    
+
     if (type !== "" && imovel.filterType !== type) {
       return false;
     }
@@ -44,10 +44,16 @@ export const applyFilter = (imoveis, filterOptions) => {
     ) {
       return false;
     }
-    if (minSquareFoot !== "" && imovel.filterSquareFoot < parseInt(minSquareFoot)) {
+    if (
+      minSquareFoot !== "" &&
+      imovel.filterSquareFoot < parseInt(minSquareFoot)
+    ) {
       return false;
     }
-    if (maxSquareFoot !== "" && imovel.filterSquareFoot > parseInt(maxSquareFoot)) {
+    if (
+      maxSquareFoot !== "" &&
+      imovel.filterSquareFoot > parseInt(maxSquareFoot)
+    ) {
       return false;
     }
     if (minPrice !== "" && imovel.filterCost < parseInt(minPrice)) {
@@ -62,7 +68,7 @@ export const applyFilter = (imoveis, filterOptions) => {
     if (cityId !== "" && imovel.city !== cityId) {
       return false;
     }
- 
+
     return true;
   });
 

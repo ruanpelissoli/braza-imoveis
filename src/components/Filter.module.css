@@ -3,24 +3,51 @@
   justify-content: center;
   align-items: center;
   margin: 0 10%;
-  flex-wrap: wrap; /* Adiciona quebra de linha */
+  flex-wrap: wrap;
 }
 
 .filter {
   width: 100%;
-  max-width: 60%;
-  padding: 20px;
+  max-width: 65%;
+  padding: 0 20px 0 20px;
   background-color: #f2f2f2;
   border: 1px solid #ddd;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: space-between; /* Adiciona espaço entre os elementos */
+  justify-content: space-between;
+  border-radius: 15px;
 }
+
+.filterRow {
+  margin-bottom: 5px;
+}
+
+
+.filterColor1 {
+  background-color: rgb(158, 158, 158);
+  padding: 0 20px 0 10px;
+  color: white;
+}
+
+.filterColor2 {
+  background-color: rgb(83, 83, 83);
+  color: white;
+  padding: 0 20px 0 10px;
+}
+
+.filterColor3 {
+  background-color: #272727;
+  color: white;
+  padding: 0 20px 0 10px;
+}
+
 
 .filter label {
   flex-basis: 100%;
   margin-bottom: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .filter select,
@@ -28,8 +55,11 @@
 .filter input[type="text"] {
   padding: 5px;
   flex: 1;
+  width: 150px;
   min-width: 0;
   border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
 }
 
 .filterButton {
@@ -39,6 +69,21 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 37px;
+  height: 37px;
+  border: 2px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
 }
 
 
