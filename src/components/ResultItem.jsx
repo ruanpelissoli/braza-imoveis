@@ -1,4 +1,3 @@
-// ResultItem.js
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./ResultItem.module.css";
@@ -16,7 +15,6 @@ const ResultItem = ({
   type,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
 
   const goToPreviousImage = () => {
     if (currentImageIndex > 0) {
@@ -32,8 +30,10 @@ const ResultItem = ({
 
   return (
     <li className={classes.modalcontent}>
-      <h2>{title}</h2>
-      <p>{description}</p>
+      <div className={classes.titleWrapper}>
+        <h2>{title}</h2>
+      </div>
+
       <div className={classes.itemImageWrapper}>
         <div className={classes.itemImage}>
           {propertyImages.map((imagem, index) => (
@@ -69,16 +69,46 @@ const ResultItem = ({
           &gt;
         </button>
       </div>
-      <div className={classes.details}>
-        Quartos: {bedrooms} - Banheiros: {bathrooms} - Garagem: {garageSpaces}{" "}
-        Tamanho: {squareFoot ? `${squareFoot}m²` : "Não Informado"} Tipo: {type}
+      <div className={classes.detailsWrapper}>
+        {type && (
+          <div className={classes.details}>
+            {type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()}
+          </div>
+        )}
+      {bedrooms > 0 && (
+          <div className={classes.details}>
+            {bedrooms === 1 ? `${bedrooms} Quarto` : `${bedrooms} Quartos`}
+          </div>
+        )}
+        {bathrooms > 0 && (
+          <div className={classes.details}>
+            {bathrooms === 1 ? `${bathrooms} Banheiros` : `${bathrooms} Banheiros`}
+          </div>
+        )}
+        {garageSpaces > 0 && (
+          <div className={classes.details}>
+            {garageSpaces === 1 ? `${garageSpaces} Garagem` : `${garageSpaces} Garagens`}
+          </div>
+        )}
+        {squareFoot > 0 && (
+          <div className={classes.details}>
+            {squareFoot}m²
+          </div>
+        )}
       </div>
-      <div className={classes.moreDetailsContainer}>
-      <Link to={`/results/${id}`} target="_blank" className={classes.moreDetails}>
+
+      <div className={classes.moreDetailsWrapper}>
+        <Link
+          to={`/results/${id}`}
+          target="_blank"
+          className={classes.moreDetails}
+        >
           Mais Detalhes
         </Link>
-        </div>
-      <h3>{price}</h3>
+      </div>
+      <div className={classes.priceWrapper}>
+        <h3>{price}</h3>
+      </div>
     </li>
   );
 };

@@ -1,12 +1,13 @@
 .modalcontent {
   flex-basis: 26%;
-  margin: 10px 10px;
+  margin: 30px 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border: black 1px solid;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.295);
-  height: 500px;
+  height: 450px;
+  max-width: 350px;
   border-radius: 10px;
 }
 
@@ -15,7 +16,6 @@
   width: 100%;
 }
 
-/* Estilo para a imagem */
 
 /* Estilo para o título */
 .modalcontent h2 {
@@ -27,42 +27,20 @@
 }
 
 .modalcontent h3 {
-  margin-bottom: 0;
   font-size: 25px; /* Reduzir o tamanho da fonte do sub-título */
   color: rgb(15, 199, 15);
   text-decoration: none;
-  margin-bottom: 5px;
 }
 
-/* Estilo para a descrição */
-.modalcontent p {
-  margin: 0;
-  font-size: 14px;
-  text-align: center;
-  max-height: 100px; /* Reduzir a altura máxima da descrição */
-  overflow-y: scroll;
-  color: #505050;
-}
-
-.itemImageWrapper {
-  margin: auto;
-
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 280px;
-  width: 100%;
-}
 
 .itemImage {
-  max-width: 350px;
-  max-height: 280px;
+  max-width: 250px;
+  max-height: 180px;
 }
 
 .currentImage {
-  max-width: 350px;
-  max-height: 230px;
+  max-width: 250px;
+  max-height: 180px;
   object-fit: contain;
   margin: auto; /*centraliza horizontalmente*/
   display: block; /*centraliza verticalmente*/
@@ -104,14 +82,18 @@
 }
 
 .details {
-  border: 1px solid black;
-  margin-left: 45px;
-  margin-right: 45px;
+  display: flex;
+  border: 1px solid yellow;
   border-radius: 10px;
-  background-color: #e0e0e0;
+  background-color: black;
   font-size: 17px;
-  padding-right: 2px;
-  padding-left: 2px;
+  padding: 2px;
+  margin: 2px 5px 2px 5px;
+  max-height: 30px;
+  min-width: 100px;
+  justify-content: center;
+  align-items: center;
+  color: yellow;
 }
 
 .moreDetails {
@@ -121,20 +103,48 @@
   display: flex;
   justify-content: center;
   border-radius: 4px;
-  margin: 0;
   text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 5px;
 }
 
 .moreDetails:hover {
   background-color: rgb(51, 51, 51);
 }
 
-.moreDetailsContainer {
+.titleWrapper {
+  width: 100%;
+  height: 84px;
+}
+
+.itemImageWrapper {
+  margin: auto;
+  position: relative;
   display: flex;
   justify-content: center;
-  width: 50%;
-  margin: 0 auto;
+  align-items: center;
+  height: 230px;
+  width: 100%;
+  background-color:  rgb(90, 89, 89);
+}
+
+.detailsWrapper {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.moreDetailsWrapper {
+  width: 100%;
+  height: 50px;
+  
+}
+
+.priceWrapper {
+  width: 100%;
+  height: 60px;
+  
 }
