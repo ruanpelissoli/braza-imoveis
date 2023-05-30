@@ -10,32 +10,36 @@ const Results = () => {
   const dispatch = useDispatch();
   const imoveis = useSelector((state) => state.imoveis);
   const [atualImoveis, setAtualImoveis] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [hasMoreResults, setHasMoreResults] = useState(true);
+  const filterOptions = useSelector((state) => state.filterOptions);
 
 
   useEffect(() => {
     dispatch(setImoveis(currentPage));
   }, [dispatch, currentPage]);
 
-  const filterOptions = useSelector((state) => state.filterOptions);
+  useEffect(() => {
+    setCurrentPage(1); 
+  }, [filterOptions]);
 
+  
   useEffect(() => {
     const filteredImoveis = applyFilter(imoveis, filterOptions);
-    const nextImoveis = filteredImoveis.slice(0, 12);
-    setAtualImoveis(nextImoveis);
+    setAtualImoveis(filteredImoveis.slice(0, 12));
     setHasMoreResults(filteredImoveis.length > 12);
   }, [imoveis, filterOptions]);
 
   const handleShowMoreClick = () => {
-    const startIndex = (currentPage + 1) * 12;
+    const startIndex = currentPage * 12;
     const endIndex = startIndex + 12;
     const filteredImoveis = applyFilter(imoveis, filterOptions);
     const nextImoveis = filteredImoveis.slice(startIndex, endIndex);
     setAtualImoveis((prevImoveis) => [...prevImoveis, ...nextImoveis]);
-    setCurrentPage(currentPage + 1);
     setHasMoreResults(nextImoveis.length > 0); 
+    setCurrentPage((prevPage) => prevPage + 1);
   };
+  
 
   return (
     <div>
