@@ -1,17 +1,19 @@
+import { Imovel, FilterOptions } from "./types"; // Importe a interface de tipo Imovel
+
 export const resetFilterOptions = () => {
   return {
     type: "RESET_FILTER_OPTIONS",
   };
 };
 
-export const setFilterOptions = (filterOptions) => {
+export const setFilterOptions = (filterOptions: FilterOptions) => {
   return {
     type: "SET_FILTER_OPTIONS",
     payload: filterOptions,
   };
 };
 
-export const applyFilter = (imoveis, filterOptions) => {
+export const applyFilter = (imoveis: Imovel[], filterOptions: FilterOptions) => {
   if (!imoveis) {
     return [];
   }
@@ -71,6 +73,8 @@ export const applyFilter = (imoveis, filterOptions) => {
 
     return true;
   });
+
+  
 
   return filteredImoveis;
 };

@@ -4,7 +4,8 @@ import { setImoveis } from "../store/imoveisActions";
 import classes from "./Results.module.css";
 import ResultItem from "../components/ResultItem.jsx";
 import { applyFilter } from "../store/filterActions";
-import Filter from "../components/Filter";
+import Filter from "../components/Filter.tsx";
+
 
 const Results = () => {
   const dispatch = useDispatch();

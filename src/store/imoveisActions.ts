@@ -1,6 +1,23 @@
-export const setImoveis = (page, filterOptions) => async (dispatch) => {
+import { Dispatch } from "redux";
+import { RootState, FilterOptions } from "./types"; // Importe as interfaces de tipos RootState e FilterOptions
+
+export const setImoveis = (
+  page: number,
+  filterOptions: FilterOptions
+): any => async (dispatch: Dispatch<any>, getState: () => RootState) => {
   try {
-    const { type, bedrooms, bathrooms, garageSpace, minSquareFoot, maxSquareFoot, minPrice, maxPrice, stateId, cityId, } = filterOptions;
+    const {
+      type,
+      bedrooms,
+      bathrooms,
+      garageSpace,
+      minSquareFoot,
+      maxSquareFoot,
+      minPrice,
+      maxPrice,
+      stateId,
+      cityId,
+    } = filterOptions;
     let url = `https://braza-imoveis-api.azurewebsites.net/properties?page=${page}&size=12`;
 
     if (type) {
@@ -41,4 +58,6 @@ export const setImoveis = (page, filterOptions) => async (dispatch) => {
     console.error("Erro ao buscar imóveis:", error);
   }
 };
+
+
   

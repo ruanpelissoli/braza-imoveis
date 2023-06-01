@@ -1,4 +1,4 @@
-import Filter from "../components/Filter.jsx";
+import Filter from "../components/Filter.tsx";
 
 const HomePage = () => {
   return (

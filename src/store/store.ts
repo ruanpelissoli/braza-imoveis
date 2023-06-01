@@ -1,7 +1,8 @@
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import { createStore, applyMiddleware, Store, AnyAction } from "redux";
+import thunk, { ThunkMiddleware } from "redux-thunk";
+import { RootState } from "./types"; // Importe a interface de tipo RootState
 
-const initialState = {
+const initialState: RootState = {
   imoveis: null,
   filterOptions: {
     type: "",
@@ -17,7 +18,7 @@ const initialState = {
   },
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case "SET_IMOVEIS":
       return {
@@ -50,6 +51,9 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const store: Store<RootState, AnyAction> = createStore(
+  reducer,
+  applyMiddleware(thunk as ThunkMiddleware<RootState, AnyAction>)
+);
 
 export default store;
