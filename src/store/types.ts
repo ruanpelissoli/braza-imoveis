@@ -17,21 +17,40 @@ export interface RootState {
   }
   
   export interface Imovel {
-    id: string;
-    filterType: string;
-    realStateId: string;
+    id: number;
+    realStateId: number;
+    realStateName: string;
     url: string;
     title: string;
-    price: number;
-    description: string;
-    details: string;
-    images: string[];
+    price: string;
+    state: string;
+    city: string;
     filterBedrooms: number;
     filterBathrooms: number;
     filterGarageSpaces: number;
     filterSquareFoot: number;
     filterCost: number;
-    city: string;
-    state: string;
+    filterType: string;
+    images: string[];
+  }
+
+  export interface DetailedImovel {
+    id: number;
+    realStateId: number;
     realStateName: string;
+    url: string;
+    title: string;
+    price: string;
+    description: string;
+    details: string;
+    filterBedrooms: number;
+    filterBathrooms: number;
+    filterGarageSpaces: number;
+    filterSquareFoot: number;
+    filterCost: number;
+    filterType: string;
+    images: string[];
+    state: string;
+    city: string;
+    similarProperties: Imovel[];
   }

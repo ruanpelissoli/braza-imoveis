@@ -54,6 +54,7 @@ export const setImoveis = (
     const response = await fetch(url, { mode: "cors" });
     const data = await response.json();
     dispatch({ type: "SET_IMOVEIS", payload: data });
+    return data;
   } catch (error) {
     console.error("Erro ao buscar imóveis:", error);
   }

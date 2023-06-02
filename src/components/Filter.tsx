@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setImoveis } from "../store/imoveisActions";
 import classes from "./Filter.module.css";
 import { RootState } from "../store/types";
-import { resetFilterOptions } from "../store/filterActions";
 import { FilterOptions } from "../store/types";
 
 const Filter: React.FC<{}> = () => {
@@ -15,12 +14,11 @@ const Filter: React.FC<{}> = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [stateOptions, setStateOptions] = useState<any[]>([]);
   const [cityOptions, setCityOptions] = useState<any[]>([]);
+  
 
   useEffect(() => {
-    dispatch(resetFilterOptions());
-
     fetchStateOptions();
-  }, [dispatch]);
+  }, []);
 
   const fetchStateOptions = async () => {
     try {
@@ -72,7 +70,7 @@ const Filter: React.FC<{}> = () => {
   const handleFilterSubmit = async () => {
     setIsLoading(true);
     try {
-      await dispatch(setImoveis(0, filterValues));
+      await dispatch(setImoveis(1, filterValues));
       setIsLoading(false);
       navigate("/results");
     } catch (error) {

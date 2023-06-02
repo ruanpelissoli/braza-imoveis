@@ -1,18 +1,26 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./ResultItem.module.css";
+import { Imovel } from "../store/types";
 
-const ResultItem = ({
+
+
+const ResultItem: React.FC<Imovel> = ({
   id,
+  realStateId,
+  realStateName,
+  url,
   title,
   price,
-  description,
-  propertyImages,
-  bedrooms,
-  bathrooms,
-  garageSpaces,
-  squareFoot,
-  type,
+  state,
+  city,
+  filterBedrooms,
+  filterBathrooms,
+  filterGarageSpaces,
+  filterSquareFoot,
+  filterCost,
+  filterType,
+  images
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -23,7 +31,7 @@ const ResultItem = ({
   };
 
   const goToNextImage = () => {
-    if (currentImageIndex < propertyImages.length - 1) {
+    if (currentImageIndex < images.length - 1) {
       setCurrentImageIndex(currentImageIndex + 1);
     }
   };
@@ -36,11 +44,11 @@ const ResultItem = ({
 
       <div className={classes.itemImageWrapper}>
         <div className={classes.itemImage}>
-          {propertyImages.map((imagem, index) => (
+          {images.map((imagem, index) => (
             <img
               key={index}
               src={imagem}
-              alt={description}
+              alt={imagem}
               className={classes.currentImage}
               style={{
                 display: index === currentImageIndex ? "block" : "none",
@@ -61,7 +69,7 @@ const ResultItem = ({
           onClick={goToNextImage}
           style={{
             display:
-              currentImageIndex === propertyImages.length - 1
+              currentImageIndex === images.length - 1
                 ? "none"
                 : "block",
           }}
@@ -70,29 +78,29 @@ const ResultItem = ({
         </button>
       </div>
       <div className={classes.detailsWrapper}>
-        {type && (
+        {filterType && (
           <div className={classes.details}>
-            {type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()}
+            {filterType.charAt(0).toUpperCase() + filterType.slice(1).toLowerCase()}
           </div>
         )}
-      {bedrooms > 0 && (
+        {filterBedrooms > 0 && (
           <div className={classes.details}>
-            {bedrooms === 1 ? `${bedrooms} Quarto` : `${bedrooms} Quartos`}
+            {filterBedrooms === 1 ? `${filterBedrooms} Quarto` : `${filterBedrooms} Quartos`}
           </div>
         )}
-        {bathrooms > 0 && (
+        {filterBathrooms > 0 && (
           <div className={classes.details}>
-            {bathrooms === 1 ? `${bathrooms} Banheiros` : `${bathrooms} Banheiros`}
+            {filterBathrooms === 1 ? `${filterBathrooms} Banheiro` : `${filterBathrooms} Banheiros`}
           </div>
         )}
-        {garageSpaces > 0 && (
+        {filterGarageSpaces > 0 && (
           <div className={classes.details}>
-            {garageSpaces === 1 ? `${garageSpaces} Garagem` : `${garageSpaces} Garagens`}
+            {filterGarageSpaces === 1 ? `${filterGarageSpaces} Garagem` : `${filterGarageSpaces} Garagens`}
           </div>
         )}
-        {squareFoot > 0 && (
+        {filterSquareFoot > 0 && (
           <div className={classes.details}>
-            {squareFoot}m²
+            {filterSquareFoot}m²
           </div>
         )}
       </div>

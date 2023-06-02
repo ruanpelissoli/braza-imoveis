@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import classes from "./ResultDetail.module.css";
+import { DetailedImovel } from "../store/types";
 
-const ResultDetailPage = () => {
-  const { id } = useParams();
+const ResultDetailPage: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [imovel, setImovel] = useState([]);
+  const [imovel, setImovel] = useState<DetailedImovel | null>(null);
 
   useEffect(() => {
     const fetchImoveis = async () => {
@@ -14,7 +15,7 @@ const ResultDetailPage = () => {
           `https://braza-imoveis-api.azurewebsites.net/properties/${id}`,
           { mode: "cors" }
         );
-        const data = await response.json();
+        const data: DetailedImovel = await response.json();
         setImovel(data);
       } catch (error) {
         console.error("Erro ao buscar imóveis:", error);
@@ -30,10 +31,14 @@ const ResultDetailPage = () => {
   };
 
   const goToNextImage = () => {
-    if (currentImageIndex < imovel.images.length - 1) {
+    if (currentImageIndex < (imovel?.images.length || 0) - 1) {
       setCurrentImageIndex(currentImageIndex + 1);
     }
   };
+
+  if (!imovel) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={classes.resultDetailPage}>

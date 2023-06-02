@@ -2,10 +2,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import HomePage from "./pages/Home.jsx";
-import Results from "./pages/Results.jsx";
+import Results from "./pages/Results.tsx";
 import RootLayout from "./pages/Root.jsx";
 import ErrorPage from "./pages/Error.jsx";
-import ResultDetailPage from "./pages/ResultDetail.jsx";
+import ResultDetailPage from "./pages/ResultDetail.tsx";
 import CadastroPage from "./pages/Cadastro";
 
 const router = createBrowserRouter([
