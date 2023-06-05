@@ -13,10 +13,16 @@ export const setFilterOptions = (filterOptions: FilterOptions) => {
   };
 };
 
+export const setLastFilterOptions = (filterOptions: FilterOptions) => {
+  return {
+    type: "SET_LAST_FILTER_OPTIONS",
+    payload: filterOptions,
+  };
+};
+
+
+
 export const applyFilter = (imoveis: Imovel[], filterOptions: FilterOptions) => {
-  if (!imoveis) {
-    return [];
-  }
   const filteredImoveis = imoveis.filter((imovel) => {
     const {
       type,

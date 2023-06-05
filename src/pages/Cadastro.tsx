@@ -1,4 +1,4 @@
-const CadastroPage = () => {
+const CadastroPage: React.FC = () => {
     return <h1>Cadastro</h1>
 
 }

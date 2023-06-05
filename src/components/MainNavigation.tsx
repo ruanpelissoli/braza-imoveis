@@ -2,14 +2,14 @@ import { NavLink } from "react-router-dom";
 
 import classes from "./MainNavigation.module.css";
 
-const MainNavigation = () => {
+const MainNavigation: React.FC = () => {
   return (
     <header className={classes.header}>
       <nav>
         <ul>
           <li>
             <NavLink
-              to="/"
+              to="/ruanpelissoli/braza-imoveis"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
@@ -17,36 +17,15 @@ const MainNavigation = () => {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/imoveis"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              Imóveis
-            </NavLink>
-          </li>
 
           <li>
             <NavLink
-              to="/cadastro"
+              to="/ruanpelissoli/braza-imoveis/cadastro"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
             >
               Cadastrar Imóvel
-            </NavLink>
-          </li>
-          
-          <li>
-            <NavLink
-              to="/support"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              Suporte
             </NavLink>
           </li>
         </ul>

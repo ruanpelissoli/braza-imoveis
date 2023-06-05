@@ -1,5 +1,6 @@
 import { Dispatch } from "redux";
-import { RootState, FilterOptions } from "./types"; // Importe as interfaces de tipos RootState e FilterOptions
+import { RootState, FilterOptions } from "./types"; 
+import { setLastFilterOptions } from "./filterActions";
 
 export const setImoveis = (
   page: number,
@@ -54,6 +55,7 @@ export const setImoveis = (
     const response = await fetch(url, { mode: "cors" });
     const data = await response.json();
     dispatch({ type: "SET_IMOVEIS", payload: data });
+    dispatch(setLastFilterOptions(filterOptions));
     return data;
   } catch (error) {
     console.error("Erro ao buscar imóveis:", error);

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import classes from "./ResultItem.module.css";
 import { Imovel } from "../store/types";
 
-
-
 const ResultItem: React.FC<Imovel> = ({
   id,
   realStateId,
@@ -22,7 +20,7 @@ const ResultItem: React.FC<Imovel> = ({
   filterType,
   images
 }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   const goToPreviousImage = () => {
     if (currentImageIndex > 0) {
@@ -107,7 +105,7 @@ const ResultItem: React.FC<Imovel> = ({
 
       <div className={classes.moreDetailsWrapper}>
         <Link
-          to={`/results/${id}`}
+          to={`/ruanpelissoli/braza-imoveis/results/${id}`}
           target="_blank"
           className={classes.moreDetails}
         >

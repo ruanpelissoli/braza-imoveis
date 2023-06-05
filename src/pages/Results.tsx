@@ -1,49 +1,45 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import classes from "./Results.module.css";
 import ResultItem from "../components/ResultItem";
 import { applyFilter } from "../store/filterActions";
 import Filter from "../components/Filter";
 import { RootState, Imovel, FilterOptions } from "../store/types";
 import { setImoveis } from "../store/imoveisActions";
-import { useDispatch } from "react-redux";
 
 const Results: React.FC = () => {
+  const dispatch = useDispatch();
+  
   const imoveis: Imovel[] = useSelector(
     (state: RootState) => state.imoveis ?? []
   );
-  const [atualImoveis, setAtualImoveis] = useState<Imovel[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [hasMoreResults, setHasMoreResults] = useState(true);
-  const filterOptions: FilterOptions = useSelector((state: RootState) => state.filterOptions);
   
-  const dispatch = useDispatch();
+  const [atualImoveis, setAtualImoveis] = useState<Imovel[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [hasMoreResults, setHasMoreResults] = useState<boolean>(true);
+  const filterOptions: FilterOptions = useSelector(
+    (state: RootState) => state.filterOptions
+  );
+  const lastFilterOptions: FilterOptions = useSelector((state: RootState) => state.lastFilterOptions)
 
   useEffect(() => {
     if (imoveis && imoveis.length > 0) {
-      const filteredImoveis = applyFilter(imoveis, filterOptions);
+      const filteredImoveis: Imovel[] = applyFilter(imoveis, filterOptions);
       setAtualImoveis(filteredImoveis);
-      console.log(filterOptions);
     }
-  }, [imoveis, filterOptions]);
+  }, [imoveis, filterOptions, dispatch]);
+
+  useEffect(() => {
+    setCurrentPage(1); 
+  }, [filterOptions]);
 
   const handleShowMoreClick = async () => {
-    const nextPage = currentPage + 1;
+    const nextPage: number = currentPage + 1;
     setCurrentPage(nextPage);
-  
-    const currentImoveis = [...atualImoveis]; // Armazena os imóveis atuais em uma nova variável
-  
-    const response = await dispatch(setImoveis(nextPage, filterOptions));
-    if (response && response.payload) {
-      
-      const nextImoveis = response.payload;
-      console.log(nextImoveis);
-      const filteredNextImoveis = applyFilter(nextImoveis, filterOptions);
-  
-      const updatedImoveis = [...currentImoveis, ...filteredNextImoveis];
-      setAtualImoveis(updatedImoveis);
-      setHasMoreResults(filteredNextImoveis.length > 0);
-    }
+    const nextImoveis: Imovel[] = await dispatch(setImoveis(nextPage, lastFilterOptions));
+    setAtualImoveis(nextImoveis);
+    setHasMoreResults(nextImoveis.length > 0);
+    
   };
 
   return (
@@ -81,3 +77,4 @@ const Results: React.FC = () => {
 };
 
 export default Results;
+

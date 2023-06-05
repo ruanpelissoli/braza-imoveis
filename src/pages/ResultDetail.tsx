@@ -5,7 +5,7 @@ import { DetailedImovel } from "../store/types";
 
 const ResultDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [imovel, setImovel] = useState<DetailedImovel | null>(null);
 
   useEffect(() => {

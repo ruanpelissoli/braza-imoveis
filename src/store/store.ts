@@ -16,6 +16,18 @@ const initialState: RootState = {
     stateId: "",
     cityId: "",
   },
+  lastFilterOptions: {
+    type: "",
+    bedrooms: "",
+    bathrooms: "",
+    garageSpace: "",
+    minSquareFoot: "",
+    maxSquareFoot: "",
+    minPrice: "",
+    maxPrice: "",
+    stateId: "",
+    cityId: "",
+  },
 };
 
 const reducer = (state = initialState, action: AnyAction) => {
@@ -46,6 +58,12 @@ const reducer = (state = initialState, action: AnyAction) => {
           cityId: "",
         },
       };
+    case "SET_LAST_FILTER_OPTIONS": 
+      return {
+        ...state,
+        lastFilterOptions: action.payload,
+      };
+
     default:
       return state;
   }

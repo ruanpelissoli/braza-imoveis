@@ -1,6 +1,6 @@
-import MainNavigation from "../components/MainNavigation.jsx";
+import MainNavigation from "../components/MainNavigation";
 
-const ErrorPage = () => {
+const ErrorPage: React.FC = () => {
     return (
       <>
         <MainNavigation />

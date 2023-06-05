@@ -5,15 +5,16 @@ import { setImoveis } from "../store/imoveisActions";
 import classes from "./Filter.module.css";
 import { RootState } from "../store/types";
 import { FilterOptions } from "../store/types";
+import { resetFilterOptions, setFilterOptions, setLastFilterOptions } from "../store/filterActions";
 
 const Filter: React.FC<{}> = () => {
   const dispatch = useDispatch();
   const filterOptions = useSelector((state: RootState) => state.filterOptions);
   const navigate = useNavigate();
   const [filterValues, setFilterValues] = useState<FilterOptions>(filterOptions);
-  const [isLoading, setIsLoading] = useState(false);
-  const [stateOptions, setStateOptions] = useState<any[]>([]);
-  const [cityOptions, setCityOptions] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [stateOptions, setStateOptions] = useState<string[]>([]);
+  const [cityOptions, setCityOptions] = useState<string[]>([]);
   
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const Filter: React.FC<{}> = () => {
       const response = await fetch(
         "https://braza-imoveis-api.azurewebsites.net/states"
       );
-      const data = await response.json();
+      const data: string[] = await response.json();
 
       setStateOptions(data);
     } catch (error) {
@@ -38,7 +39,7 @@ const Filter: React.FC<{}> = () => {
       const response = await fetch(
         `https://braza-imoveis-api.azurewebsites.net/cities/${stateId}`
       );
-      const data = await response.json();
+      const data: string[] = await response.json();
 
       setCityOptions(data);
     } catch (error) {
@@ -70,9 +71,13 @@ const Filter: React.FC<{}> = () => {
   const handleFilterSubmit = async () => {
     setIsLoading(true);
     try {
+      dispatch(setFilterOptions(filterValues)); 
       await dispatch(setImoveis(1, filterValues));
       setIsLoading(false);
-      navigate("/results");
+      dispatch(setLastFilterOptions(filterValues));
+      navigate("/ruanpelissoli/braza-imoveis/results");
+      dispatch(resetFilterOptions());
+      
     } catch (error) {
       console.error("Erro ao buscar imóveis:", error);
       setIsLoading(false);

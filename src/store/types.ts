@@ -1,7 +1,8 @@
 export interface RootState {
-    imoveis: Imovel[] | null;
-    filterOptions: FilterOptions;
-  }
+  imoveis: Imovel[] | null;
+  filterOptions: FilterOptions;
+  lastFilterOptions: FilterOptions; 
+}
   
   export interface FilterOptions {
     type: string;
