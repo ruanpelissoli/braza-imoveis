@@ -9,7 +9,7 @@ const MainNavigation: React.FC = () => {
         <ul>
           <li>
             <NavLink
-              to="/ruanpelissoli/braza-imoveis"
+              to="/"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
@@ -20,7 +20,7 @@ const MainNavigation: React.FC = () => {
 
           <li>
             <NavLink
-              to="/ruanpelissoli/braza-imoveis/cadastro"
+              to="/cadastro"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }

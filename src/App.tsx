@@ -8,31 +8,33 @@ import ErrorPage from "./pages/Error";
 import ResultDetailPage from "./pages/ResultDetail";
 import CadastroPage from "./pages/Cadastro";
 
-// Set the base URL
-const baseUrl = "/ruanpelissoli/braza-imoveis";
+const baseUrl = '/braza-imoveis';
 
 const router = createBrowserRouter([
   {
-    path: baseUrl, // Use the base URL as the root path
+    path: '/', // Use the base URL as the root path
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: `${baseUrl}/results`, // Extend the base URL for the results page
+        path: `/results`, // Extend the base URL for the results page
         element: <Results />,
       },
       {
-        path: `${baseUrl}/results/:id`, // Extend the base URL for the result detail page
+        path: `/results/:id`, // Extend the base URL for the result detail page
         element: <ResultDetailPage />,
       },
       {
-        path: `${baseUrl}/cadastro`, // Extend the base URL for the cadastro page
+        path: `/cadastro`, // Extend the base URL for the cadastro page
         element: <CadastroPage />,
       },
     ],
   },
-]);
+], 
+{
+  basename: baseUrl
+});
 
 function App() {
   return (

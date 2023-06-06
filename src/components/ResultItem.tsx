@@ -105,8 +105,7 @@ const ResultItem: React.FC<Imovel> = ({
 
       <div className={classes.moreDetailsWrapper}>
         <Link
-          to={`/ruanpelissoli/braza-imoveis/results/${id}`}
-          target="_blank"
+          to={`/results/${id}`}
           className={classes.moreDetails}
         >
           Mais Detalhes

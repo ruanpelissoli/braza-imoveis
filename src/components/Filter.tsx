@@ -75,7 +75,7 @@ const Filter: React.FC<{}> = () => {
       await dispatch(setImoveis(1, filterValues));
       setIsLoading(false);
       dispatch(setLastFilterOptions(filterValues));
-      navigate("/ruanpelissoli/braza-imoveis/results");
+      navigate("/results");
       dispatch(resetFilterOptions());
       
     } catch (error) {
