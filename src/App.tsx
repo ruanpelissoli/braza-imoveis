@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import HomePage from "./pages/Home";
@@ -10,7 +10,7 @@ import CadastroPage from "./pages/Cadastro";
 
 const baseUrl = '/braza-imoveis';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/', // Use the base URL as the root path
     element: <RootLayout />,
@@ -31,10 +31,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-], 
-{
-  basename: baseUrl
-});
+]);
 
 function App() {
   return (
