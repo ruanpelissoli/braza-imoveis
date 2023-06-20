@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import classes from "./Results.module.css";
 import ResultItem from "../components/ResultItem";
 import { applyFilter } from "../store/filterActions";
 import Filter from "../components/Filter";
@@ -45,7 +44,7 @@ const Results: React.FC = () => {
   return (
     <div>
       <Filter />
-      <ul className={classes.resultul}>
+      <ul className="flex flex-wrap p-0 justify-center items-center mx-4 list-none">
         {atualImoveis &&
           atualImoveis.map((result) => (
             <ResultItem

@@ -8,7 +8,7 @@ import ErrorPage from "./pages/Error";
 import ResultDetailPage from "./pages/ResultDetail";
 import CadastroPage from "./pages/Cadastro";
 
-const baseUrl = '/braza-imoveis';
+
 
 const router = createHashRouter([
   {

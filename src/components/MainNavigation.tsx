@@ -1,28 +1,26 @@
 import { NavLink } from "react-router-dom";
 
-import classes from "./MainNavigation.module.css";
-
 const MainNavigation: React.FC = () => {
   return (
-    <header className={classes.header}>
+    <header className="flex justify-center items-center p-2.5 bg-black text-white">
       <nav>
-        <ul>
-          <li>
+        <ul className="flex m-0 p-0 list-none">
+          <li className="py-1.5 px-5">
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive ? "underline" : "hover:underline"
               }
             >
               Home
             </NavLink>
           </li>
 
-          <li>
+          <li className="py-1.5 px-5">
             <NavLink
               to="/cadastro"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive ?  "underline" : "hover:underline"
               }
             >
               Cadastrar Imóvel
