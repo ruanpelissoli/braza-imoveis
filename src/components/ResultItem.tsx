@@ -55,14 +55,14 @@ const ResultItem: React.FC<Imovel> = ({
         </div>
 
         <button
-          className={"absolute top-1/2 translate-y-1/2 text-2xl text-white bg-[#5c5c5c67] py-2 px-3.5 cursor-pointer left-0 hover:opacity-50"}
+          className={"absolute top-2/4 translate-y-1/2 text-2xl text-white bg-[#5c5c5c67] py-2 px-3.5 cursor-pointer left-0 hover:opacity-50"}
           onClick={goToPreviousImage}
           style={{ display: currentImageIndex === 0 ? "none" : "block" }}
         >
           &lt;
         </button>
         <button
-          className={"absolute top-1/2 translate-y-1/2 text-2xl text-white bg-[#5c5c5c67] py-2 px-3.5 cursor-pointer right-0 hover:opacity-50"} 
+          className={"absolute top-2/4 translate-y-1/2 text-2xl text-white bg-[#5c5c5c67] py-2 px-3.5 cursor-pointer right-0 hover:opacity-50"} 
           onClick={goToNextImage}
           style={{
             display: currentImageIndex === images.length - 1 ? "none" : "block",

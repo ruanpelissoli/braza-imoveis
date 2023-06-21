@@ -86,7 +86,7 @@ const Filter: React.FC<{}> = () => {
   return (
     <>
       <div className="flex flex-wrap items-center justify-center my-0 mx-2 ">
-        <div className="flex flex-wrap w-full justify-between rounded-xl py-0 px-5 bg-[#f2f2f2] max-w-6xl gap-3">
+        <div className="flex flex-wrap w-full justify-between rounded-xl py-0 px-5 lg:bg-[#f2f2f2] max-w-6xl gap-3 sm:bg-red-800">
           <div className="mb-1">
             <label htmlFor="type" className="flex items-center mb-1 basis-full">Tipo:</label>
             <select id="type" onChange={handleFilterChange} className="flex flex-1 p-1 items-center w-36 min-w-0">
@@ -128,7 +128,7 @@ const Filter: React.FC<{}> = () => {
             </select>
           </div>
 
-          <div className="text-white py-0 px-2.5 bg-[#ccc]">
+          <div className="text-black py-0 px-2.5 bg-[#ccc]">
             <div className="mb-1">
               <label htmlFor="minSquareFoot" className="flex items-center mb-1 basis-full">m² Mínimo:</label>
               <input
@@ -150,7 +150,7 @@ const Filter: React.FC<{}> = () => {
               />
             </div>
           </div>
-          <div className="text-white py-0 px-2.5 bg-[#ccc]">
+          <div className="text-black py-0 px-2.5 bg-[#ccc]">
             <div className="mb-1">
               <label htmlFor="minPrice" className="flex items-center mb-1 basis-full">Preço Mínimo:</label>
               <input
@@ -172,7 +172,7 @@ const Filter: React.FC<{}> = () => {
               />
             </div>
           </div>
-          <div className="text-white py-0 px-2.5 bg-[#ccc]">
+          <div className="text-black py-0 px-2.5 bg-[#ccc]">
             <div className="mb-1">
               <label htmlFor="stateId" className="flex items-center mb-1 basis-full">Estado:</label>
               <select id="stateId" onChange={handleFilterChange} className="flex flex-1 p-1 items-center w-36 min-w-0">
