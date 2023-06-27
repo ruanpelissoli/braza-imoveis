@@ -8,8 +8,6 @@ import ErrorPage from "./pages/Error";
 import ResultDetailPage from "./pages/ResultDetail";
 import CadastroPage from "./pages/Cadastro";
 
-
-
 const router = createHashRouter([
   {
     path: '/', // Use the base URL as the root path
