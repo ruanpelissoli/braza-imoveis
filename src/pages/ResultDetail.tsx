@@ -60,8 +60,8 @@ const ResultDetailPage: React.FC = () => {
   const recomended: Imovel[] = imovel.similarProperties;
 
   return (
-    <div className="grid grid-cols-2 gap-4 bg-gradient-to-b from-[#43434338] to-black">
-      <div className="flex w-[90%] justify-center relative items-center rounded-lg h-[800px] bg-black shadow shadow-black ml-10 mt-10">
+    <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 bg-gradient-to-b from-[#43434338] to-black">
+      <div className="flex md:w-[90%] justify-center relative items-center rounded-lg h-[500px] lg:h-[800px] bg-black shadow shadow-black xl:ml-10 mt-10 m-auto">
         <div className="relative items-center justify-center w-full">
           {imovel.images &&
             imovel.images.map((imagem, index) => (
@@ -69,7 +69,7 @@ const ResultDetailPage: React.FC = () => {
                 key={index}
                 src={imagem}
                 alt={imovel.description}
-                className="block m-auto object-contain rounded-lg shadow shadow-black max-w-[650px] max-h-[750px]"
+                className="block m-auto w-[500px] rounded-lg shadow shadow-black lg:w-[650px] lg:max-h-[750px]"
                 style={{
                   display: index === currentImageIndex ? "block" : "none",
                 }}
@@ -77,14 +77,14 @@ const ResultDetailPage: React.FC = () => {
             ))}
         </div>
         <button
-          className="absolute top-[350px] translate-y-1/2 text-5xl text-[#ffffff3f] cursor-pointer left-0 hover:text-white"
+          className="absolute top-[200px] bg-[#6464648c] md:bg-transparent pb-2 lg:top-[350px] translate-y-1/2 text-5xl text-[#ffffff3f] cursor-pointer left-0 hover:text-white"
           onClick={goToPreviousImage}
           style={{ display: currentImageIndex === 0 ? "none" : "block" }}
         >
           &lt;
         </button>
         <button
-          className="absolute top-[350px] translate-y-1/2 text-5xl text-[#ffffff3f] cursor-pointer right-0 hover:text-white"
+          className="absolute top-[200px] bg-[#6464648c] md:bg-transparent pb-2 lg:top-[350px] translate-y-1/2 text-5xl text-[#ffffff3f] cursor-pointer right-0 hover:text-white"
           onClick={goToNextImage}
           style={{
             display:
@@ -100,7 +100,7 @@ const ResultDetailPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-[ebebeb] shadow shadow-black rounded-sm py-4 px-2.5 h-fit mr-10 my-10 bg-white">
+      <div className="bg-[ebebeb] shadow shadow-black rounded-sm py-4 px-2.5 h-fit md:mr-10 my-10 bg-white mx-10">
         <h2 className="items-center text-4xl mb-10 bg-black text-[#acaa31] py-5 rounded-xl font-sans">
           {imovel.title}
         </h2>
@@ -114,7 +114,7 @@ const ResultDetailPage: React.FC = () => {
           {imovel.price}
         </h3>
 
-        <table className="w-4/5 my-10 mx-auto p-0.5 table-fixed font-sans">
+        <table className="w-full md:w-4/5 my-10 mx-auto p-0.5 table-fixed font-sans">
           <tbody>
             <tr className="border-black border-[1px]">
               <th className="w-3/12 bg-white">Quartos</th>
@@ -156,14 +156,14 @@ const ResultDetailPage: React.FC = () => {
         </Link>
 
         <h2 className="text-xl mt-10 font-sans">Imóveis Semelhantes:</h2>
-        <div className="flex relative justify-center items-center bg-[ebebeb] shadow shadow-black rounded-xl h-[350px] border-black border-2 my-4 mx-11 font-sans">
-          <div className="flex flex-row space-x-12">
+        <div className="flex flex-col w-fit px-10 relative justify-center items-center bg-[ebebeb] shadow shadow-black rounded-xl xl:h-[350px] border-black border-2 my-4 mx-auto font-sans">
+          <div className="flex flex-col mx-3 my-3 xl:space-x-12 xl:flex-row">
             {recomended
               .slice(startIndex, endIndex + 1)
               .map((imovel: Imovel) => (
                 <li
                   key={imovel.id}
-                  className="flex justify-center border-solid border-black border-2 flex-col rounded-lg w-[200px] h-[300px] hover:shadow-xl hover:shadow-black"
+                  className="flex my-2 justify-center border-solid border-black border-2 flex-col rounded-lg w-[200px] h-[300px] hover:shadow-xl hover:shadow-black"
                 >
                   <div className="w-full bg-black flex justify-center items-start flex-shrink-0 h-[15%] overflow-hidden">
                     <h2 className="text-[#acaa31] text-base uppercase overflow-hidden mt-0">
@@ -199,14 +199,14 @@ const ResultDetailPage: React.FC = () => {
               ))}
           </div>
           <button
-            className="absolute top-[120px] translate-y-1/2 text-5xl text-[#0000004d] cursor-pointer left-0 hover:text-black"
+            className="absolute top:-[100px] xl:top-[120px] translate-y-1/2 text-5xl text-[#0000004d] cursor-pointer left-0 hover:text-black"
             onClick={goToPreviousProperties}
             style={{ display: startIndex === 0 ? "none" : "block" }}
           >
             &lt;
           </button>
           <button
-            className="absolute top-[120px] translate-y-1/2 text-5xl text-[#0000004d] cursor-pointer right-0 hover:text-black"
+            className="absolute top:-[100px] xl:top-[120px] translate-y-1/2 text-5xl text-[#0000004d] cursor-pointer right-0 hover:text-black"
             onClick={goToNextProperties}
             style={{
               display: endIndex === recomended.length - 1 ? "none" : "block",
