@@ -42,7 +42,7 @@ const Results: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gradient-to-b from-[#43434338] to-black">
       <Filter />
       <ul className="flex flex-wrap p-0 justify-center items-center mx-4 list-none">
         {atualImoveis &&

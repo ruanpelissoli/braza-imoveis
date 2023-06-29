@@ -34,19 +34,21 @@ const ResultItem: React.FC<Imovel> = ({
   };
 
   return (
-    <li className="flex justify-center border-solid border-black border-2 flex-col mx-24 my-4 rounded-lg max-w-xs h-[450px] shadow shadow-black ">
-      <div className="w-full h-20">
-        <h2 className="mt-0 items-center text-black text-xl uppercase">{title}</h2>
+    <li className="flex justify-center border-solid border-black border-2 flex-col mx-24 my-4 rounded-lg max-w-xs h-[500px] shadow shadow-black bg-white">
+      <div className="flex items-center justify-center w-full h-[110px] bg-black">
+        <h2 className="mt-0 text-[#acaa31] text-xl uppercase font-sans">
+          {title}
+        </h2>
       </div>
 
-      <div className="flex justify-center items-center m-auto relative w-full h-60 bg-[#5c5c5c]">
-        <div className="max-w-{250px} max-h-{180px}">
+      <div className="flex items-center justify-center m-auto relative w-full h-[280px]">
+        <div className="flex items-center justify-center py-4 w-full max-h-[250px]">
           {images.map((imagem, index) => (
             <img
               key={index}
               src={imagem}
               alt={imagem}
-              className="m-auto block object-contain rounded-lg shadow shadow-black max-w-{250px} max-h-{180px}"
+              className="block rounded-lg shadow shadow-black w-[85%] h-[85%]"
               style={{
                 display: index === currentImageIndex ? "block" : "none",
               }}
@@ -55,14 +57,18 @@ const ResultItem: React.FC<Imovel> = ({
         </div>
 
         <button
-          className={"absolute top-2/4 translate-y-1/2 text-2xl text-white bg-[#5c5c5c67] py-2 px-3.5 cursor-pointer left-0 hover:opacity-50"}
+          className={
+            "absolute translate-y-1/2 top-[-120px] text-3xl text-white bg-gradient-to-r from-[#434343e8] to-transparent cursor-pointer left-0 hover:opacity-50 hover:text-black h-[240px] pr-3"
+          }
           onClick={goToPreviousImage}
           style={{ display: currentImageIndex === 0 ? "none" : "block" }}
         >
           &lt;
         </button>
         <button
-          className={"absolute top-2/4 translate-y-1/2 text-2xl text-white bg-[#5c5c5c67] py-2 px-3.5 cursor-pointer right-0 hover:opacity-50"} 
+          className={
+            "absolute translate-y-1/2 top-[-120px] text-3xl text-white bg-gradient-to-l from-[#434343e8] to-transparent cursor-pointer right-0 hover:opacity-50 hover:text-black h-[240px] pr-3"
+          }
           onClick={goToNextImage}
           style={{
             display: currentImageIndex === images.length - 1 ? "none" : "block",
@@ -71,9 +77,9 @@ const ResultItem: React.FC<Imovel> = ({
           &gt;
         </button>
       </div>
-      <div className="flex flex-wrap w-full h-12">
+      <div className="flex flex-wrap w-full h-[60px] items-center justify-center mb-2">
         {filterType && (
-          <div className="flex justify-center items-center p-0.5 max-w-1200px} max-h-{30px} my-0.5 mx-1 text-yellow-200 bg-black rounded-lg text-base">
+          <div className="flex justify-center items-center p-[3px] max-w-1200px} max-h-{30px} my-0.5 mx-1 text-yellow-200 bg-black rounded-lg text-base">
             {filterType.charAt(0).toUpperCase() +
               filterType.slice(1).toLowerCase()}
           </div>
@@ -100,17 +106,23 @@ const ResultItem: React.FC<Imovel> = ({
           </div>
         )}
         {filterSquareFoot > 0 && (
-          <div className="flex justify-center items-center p-0.5 max-w-1200px} max-h-{30px} my-0.5 mx-1 text-yellow-200 bg-black rounded-lg text-base">{filterSquareFoot}m²</div>
+          <div className="flex justify-center items-center p-0.5 max-w-1200px} max-h-{30px} my-0.5 mx-1 text-yellow-200 bg-black rounded-lg text-base">
+            {filterSquareFoot}m²
+          </div>
         )}
       </div>
 
-      <div className="w-full h-12">
-        <Link to={`/results/${id}`} className="flex justify-center items-center bg-black no-underline text-white rounded-sm pt-2.5 pb-2.5 mt-2.5 hover:bg-[#707070]">
+      <div className="flex justify-center items-center w-full h-[60px] bg-[#acaa31]">
+        <h3 className="text-2xl text-green-600 font-sans bg-black p-1 rounded-xl">{price}</h3>
+      </div>
+
+      <div className="w-full h-fit mb-0">
+        <Link
+          to={`/results/${id}`}
+          className="flex font-sans text-lg justify-center items-center bg-black no-underline text-white rounded-sm py-2 hover:text-[#fcf94d]"
+        >
           Mais Detalhes
         </Link>
-      </div>
-      <div className="w-full h-14">
-        <h3 className="text-2xl text-green-600">{price}</h3>
       </div>
     </li>
   );

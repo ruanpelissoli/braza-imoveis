@@ -85,8 +85,8 @@ const Filter: React.FC<{}> = () => {
 
   return (
     <>
-      <div className="flex flex-wrap items-center justify-center my-0 mx-2 ">
-        <div className="flex flex-wrap w-full justify-between rounded-xl py-0 px-5 lg:bg-[#f2f2f2] max-w-6xl gap-3 sm:bg-red-800">
+      <div className="flex flex-wrap items-center justify-center my-0 mx-2 py-2 font-sans">
+        <div className="flex flex-wrap w-full justify-between rounded-xl py-2 px-5 bg-[#f3f3f3] max-w-6xl gap-3">
           <div className="mb-1">
             <label htmlFor="type" className="flex items-center mb-1 basis-full">Tipo:</label>
             <select id="type" onChange={handleFilterChange} className="flex flex-1 p-1 items-center w-36 min-w-0">
@@ -128,12 +128,12 @@ const Filter: React.FC<{}> = () => {
             </select>
           </div>
 
-          <div className="text-black py-0 px-2.5 bg-[#ccc]">
+          <div className="text-black py-0 px-2.5 bg-white rounded-xl">
             <div className="mb-1">
               <label htmlFor="minSquareFoot" className="flex items-center mb-1 basis-full">m² Mínimo:</label>
               <input
                 type="number"
-                className="flex flex-1 p-1 items-center w-36 min-w-0"
+                className="flex flex-1 items-center w-36 min-w-0 border-solid border-black border-[1px]"
                 id="minSquareFoot"
                 min="0"
                 placeholder="Digite o m² mínimo"
@@ -142,7 +142,7 @@ const Filter: React.FC<{}> = () => {
               <label htmlFor="maxSquareFoot" className="flex items-center mb-1 basis-full">m² Máximo:</label>
               <input
                 type="number"
-                className="flex flex-1 p-1 items-center w-36 min-w-0"
+                className="flex flex-1 items-center w-36 min-w-0 border-solid border-black border-[1px]"
                 id="maxSquareFoot"
                 min="0"
                 placeholder="Digite o m² máximo"
@@ -150,12 +150,12 @@ const Filter: React.FC<{}> = () => {
               />
             </div>
           </div>
-          <div className="text-black py-0 px-2.5 bg-[#ccc]">
+          <div className="text-black py-0 px-2.5 bg-[#acaa31] rounded-xl">
             <div className="mb-1">
               <label htmlFor="minPrice" className="flex items-center mb-1 basis-full">Preço Mínimo:</label>
               <input
                 type="number"
-                className="flex flex-1 p-1 items-center w-36 min-w-0"
+                className="flex flex-1 items-center w-36 min-w-0"
                 id="minPrice"
                 min="0"
                 placeholder="Digite o preço mínimo"
@@ -164,7 +164,7 @@ const Filter: React.FC<{}> = () => {
               <label htmlFor="maxPrice" className="flex items-center mb-1 basis-full">Preço Máximo:</label>
               <input
                 type="number"
-                className="flex flex-1 p-1 items-center w-36 min-w-0"
+                className="flex flex-1 items-center w-36 min-w-0"
                 id="maxPrice"
                 min="0"
                 placeholder="Digite o preço máximo"
@@ -172,10 +172,10 @@ const Filter: React.FC<{}> = () => {
               />
             </div>
           </div>
-          <div className="text-black py-0 px-2.5 bg-[#ccc]">
+          <div className="text-white py-0 px-2.5 bg-black rounded-xl">
             <div className="mb-1">
               <label htmlFor="stateId" className="flex items-center mb-1 basis-full">Estado:</label>
-              <select id="stateId" onChange={handleFilterChange} className="flex flex-1 p-1 items-center w-36 min-w-0">
+              <select id="stateId" onChange={handleFilterChange} className="flex flex-1 p-1 items-center w-36 min-w-0 text-black">
                 <option value="">Qualquer</option>
                 {stateOptions.map((state: any) => (
                   <option key={state.id} value={state.id}>
@@ -186,7 +186,7 @@ const Filter: React.FC<{}> = () => {
               {cityOptions.length > 0 && (
                 <>
                   <label htmlFor="cityId" className="flex items-center mb-1 basis-full">Cidade:</label>
-                  <select id="cityId" onChange={handleFilterChange} className="flex flex-1 p-1 items-center w-36 min-w-0">
+                  <select id="cityId" onChange={handleFilterChange} className="flex flex-1 p-1 items-center w-36 min-w-0 text-black">
                     <option value="">Qualquer</option>
                     {cityOptions.map((city: any) => (
                       <option key={city.id} value={city.id}>
