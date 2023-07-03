@@ -42,7 +42,7 @@ const Results: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#43434338] to-black">
+    <div className="bg-gradient-to-b from-[#795e2238] to-black">
       <Filter />
       <ul className="flex flex-wrap p-0 justify-center items-center mx-4 list-none">
         {atualImoveis &&
@@ -69,7 +69,7 @@ const Results: React.FC = () => {
       </ul>
       {!hasMoreResults && <p>Não há mais resultados correspondentes</p>}
       {hasMoreResults && (
-        <button onClick={handleShowMoreClick}>Ver mais</button>
+        <button className="bg-white text-black rounded-sm no-underline py-2.5 px-5 hover:text-[#fffd72] hover:bg-black mx-6 my-6 font-sans hover:shadow-lg hover:shadow-black transition-colors duration-300" onClick={handleShowMoreClick}>Ver mais</button>
       )}
     </div>
   );

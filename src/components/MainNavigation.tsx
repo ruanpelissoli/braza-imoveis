@@ -9,21 +9,10 @@ const MainNavigation: React.FC = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "underline" : "hover:underline"
+                isActive ? "text-[#ebc834]" : "hover:text-[#ebc834]"
               }
             >
               Home
-            </NavLink>
-          </li>
-
-          <li className="py-1.5 px-5">
-            <NavLink
-              to="/cadastro"
-              className={({ isActive }) =>
-                isActive ?  "underline" : "hover:underline"
-              }
-            >
-              Cadastrar Imóvel
             </NavLink>
           </li>
         </ul>

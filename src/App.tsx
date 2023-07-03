@@ -6,11 +6,10 @@ import Results from "./pages/Results";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import ResultDetailPage from "./pages/ResultDetail";
-import CadastroPage from "./pages/Cadastro";
 
 const router = createHashRouter([
   {
-    path: '/', // Use the base URL as the root path
+    path: "/", // Use the base URL as the root path
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
@@ -23,10 +22,6 @@ const router = createHashRouter([
         path: `/results/:id`, // Extend the base URL for the result detail page
         element: <ResultDetailPage />,
       },
-      {
-        path: `/cadastro`, // Extend the base URL for the cadastro page
-        element: <CadastroPage />,
-      },
     ],
   },
 ]);
@@ -34,7 +29,7 @@ const router = createHashRouter([
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </Provider>
   );
 }

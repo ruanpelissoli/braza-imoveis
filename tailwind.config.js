@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         sans: ["Rubik", "sans-serif"],
       },
+      boxShadow: "0 0 5px [#acaa31], 0 0 20px black",
       plugins: [],
     },
   },

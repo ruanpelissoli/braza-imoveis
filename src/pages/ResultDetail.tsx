@@ -142,7 +142,7 @@ const ResultDetailPage: React.FC = () => {
         <Link
           to={imovel.url}
           target="_blank"
-          className="bg-black text-white rounded-sm no-underline py-2.5 px-5 hover:text-[#fffd72] mx-6 my-6 font-sans hover:shadow-lg hover:shadow-black"
+          className="bg-black text-white rounded-sm no-underline py-2.5 px-5 hover:text-[#fffd72] mx-6 my-6 font-sans hover:shadow-lg hover:shadow-black transition-colors duration-500"
         >
           Ir para o anúncio
         </Link>
@@ -150,7 +150,7 @@ const ResultDetailPage: React.FC = () => {
         <Link
           to=".."
           relative="path"
-          className="bg-black text-white rounded-sm no-underline py-2.5 px-5 hover:text-[#fffd72] mx-6 my-6 font-sans hover:shadow-lg hover:shadow-black"
+          className="bg-black text-white rounded-sm no-underline py-2.5 px-5 hover:text-[#fffd72] mx-6 my-6 font-sans hover:shadow-lg hover:shadow-black transition-colors duration-500"
         >
           Voltar
         </Link>

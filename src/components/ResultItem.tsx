@@ -34,7 +34,7 @@ const ResultItem: React.FC<Imovel> = ({
   };
 
   return (
-    <li className="flex justify-center border-solid border-black border-2 flex-col mx-24 my-4 rounded-lg max-w-xs h-[500px] shadow shadow-black bg-white">
+    <li className="flex justify-center border-solid border-black border-2 flex-col mx-24 my-4 rounded-lg max-w-xs h-[500px] shadow shadow-neon bg-white">
       <div className="flex items-center justify-center w-full h-[110px] bg-black">
         <h2 className="mt-0 text-[#acaa31] text-xl uppercase font-sans">
           {title}
@@ -119,7 +119,7 @@ const ResultItem: React.FC<Imovel> = ({
       <div className="w-full h-fit mb-0">
         <Link
           to={`/results/${id}`}
-          className="flex font-sans text-lg justify-center items-center bg-black no-underline text-white rounded-sm py-2 hover:text-[#fcf94d]"
+          className="flex font-sans text-lg justify-center items-center bg-black no-underline text-white rounded-sm py-2 hover:text-[#fcf94d] transition-color duration-500"
         >
           Mais Detalhes
         </Link>
