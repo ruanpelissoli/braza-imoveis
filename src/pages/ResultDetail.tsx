@@ -101,7 +101,7 @@ const ResultDetailPage: React.FC = () => {
       </div>
 
       <div className='shadow-boxMain rounded-sm py-4 px-2.5 h-fit md:mr-10 my-10 bg-white mx-10'>
-        <h2 className='items-center text-4xl mb-10 bg-black text-mainVeryLighter py-5 rounded-xl font-sans'>
+        <h2 className='items-center text-4xl mb-10 bg-black text-mainVeryLighter py-5 rounded-xl font-title'>
           {imovel.title}
         </h2>
         <p className='text-lg mb-4 text-justify indent-8 font-sans'>
@@ -166,7 +166,7 @@ const ResultDetailPage: React.FC = () => {
                   className='flex my-2 justify-center border-solid border-black border-2 flex-col rounded-lg w-[200px] h-[300px] hover:shadow-cardBox'
                 >
                   <div className='w-full bg-black flex justify-center items-start flex-shrink-0 h-[15%] overflow-hidden'>
-                    <h2 className='text-mainVeryLighter text-base uppercase overflow-hidden mt-0'>
+                    <h2 className='text-mainVeryLighter text-base uppercase overflow-hidden mt-0 font-title'>
                       {imovel.title}
                     </h2>
                   </div>

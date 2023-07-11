@@ -36,7 +36,7 @@ const ResultItem: React.FC<Imovel> = ({
   return (
     <li className='flex justify-center border-solid border-black border-2 flex-col mx-24 my-4 rounded-lg max-w-xs h-[500px] shadow-boxMain hover:shadow-cardBox bg-white'>
       <div className='flex items-center justify-center w-full h-[110px] bg-black'>
-        <h2 className='mt-0 text-mainLighter text-xl uppercase font-sans'>
+        <h2 className='mt-0 text-mainLighter text-xl uppercase font-title'>
           {title}
         </h2>
       </div>

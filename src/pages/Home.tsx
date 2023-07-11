@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
               className='flex my-2 justify-center border-solid border-black border-2 flex-col rounded-lg w-[200px] h-[300px] hover:shadow-cardBox bg-white'
             >
               <div className='w-full bg-black flex justify-center items-start flex-shrink-0 h-[15%] overflow-hidden'>
-                <h2 className='text-[#acaa31] text-base uppercase overflow-hidden mt-0'>
+                <h2 className='text-mainLighter text-base uppercase overflow-hidden mt-0'>
                   {imovel.title}
                 </h2>
               </div>
@@ -64,15 +64,13 @@ const HomePage: React.FC = () => {
               </div>
 
               <div className='w-full h-[20%] flex items-center'>
-                <h3 className='text-2xl text-green-600 m-auto'>
-                  {imovel.price}
-                </h3>
+                <h3 className='text-2xl text-green m-auto'>{imovel.price}</h3>
               </div>
 
-              <div className='w-full h-[40px] bg-green-500 mb-0'>
+              <div className='w-full h-[40px] mb-0'>
                 <Link
                   to={`/results/${imovel.id}`}
-                  className='flex justify-center items-center bg-black no-underline text-white rounded-sm py-1.5 hover:bg-[#707070]'
+                  className='flex justify-center items-center bg-black no-underline text-white rounded-sm py-1.5 hover:text-main transition-color duration-500'
                 >
                   Mais Detalhes
                 </Link>
@@ -81,14 +79,14 @@ const HomePage: React.FC = () => {
           ))}
         </div>
         <button
-          className='absolute top:-[100px] xl:top-[120px] translate-y-1/2 text-5xl text-[#0000004d] cursor-pointer left-0 hover:text-black'
+          className='absolute top:-[100px] xl:top-[120px] translate-y-1/2 text-5xl text-white cursor-pointer left-0 hover:text-mainUltraLighter'
           onClick={goToPreviousProperties}
           style={{ display: startIndex === 0 ? 'none' : 'block' }}
         >
           &lt;
         </button>
         <button
-          className='absolute top:-[100px] xl:top-[120px] translate-y-1/2 text-5xl text-[#0000004d] cursor-pointer right-0 hover:text-black'
+          className='absolute top:-[100px] xl:top-[120px] translate-y-1/2 text-5xl text-white cursor-pointer right-0 hover:text-mainUltraLighter'
           onClick={goToNextProperties}
           style={{
             display: endIndex === imoveis.length - 1 ? 'none' : 'block',
@@ -101,10 +99,10 @@ const HomePage: React.FC = () => {
         <div className='w-1/2 h-full bg-black '>
           <h2 className='text-white text-4xl font-sans my-10'>Mobiliados:</h2>
           <div className='bg-mainVeryLighter flex flex-row justify-center items-center'>
-            {atualEx.slice(2, 5).map((imovel: Imovel) => (
+            {atualEx.slice(3, 5).map((imovel: Imovel) => (
               <li
                 key={imovel.id}
-                className='flex my-10 mx-10 justify-center border-solid border-black border-2 flex-col rounded-lg w-[200px] h-[300px] hover:shadow-boxMain bg-white'
+                className='flex my-10 mx-10 justify-center border-solid border-black border-2 flex-col rounded-lg w-[200px] h-[300px] hover:shadow-cardBox bg-white'
               >
                 <div className='w-full bg-black flex justify-center items-start flex-shrink-0 h-[15%] overflow-hidden'>
                   <h2 className='text-mainLighter text-base uppercase overflow-hidden mt-0'>
@@ -126,7 +124,7 @@ const HomePage: React.FC = () => {
                   <h3 className='text-2xl text-green m-auto'>{imovel.price}</h3>
                 </div>
 
-                <div className='w-full h-[40px] mb-0'>
+                <div className='w-full h-[40px] mb-0 bg-black'>
                   <Link
                     to={`/results/${imovel.id}`}
                     className='flex justify-center items-center bg-black no-underline text-white rounded-sm py-1.5 hover:text-main transition-color duration-500'
@@ -144,10 +142,10 @@ const HomePage: React.FC = () => {
           </h2>
 
           <div className='bg-[#333333] flex flex-row justify-center items-center'>
-            {atualEx.slice(2, 5).map((imovel: Imovel) => (
+            {atualEx.slice(3, 5).map((imovel: Imovel) => (
               <li
                 key={imovel.id}
-                className='flex my-10 mx-10 justify-center border-solid border-black border-2 flex-col rounded-lg w-[200px] h-[300px] hover:shadow-boxMain bg-white'
+                className='flex my-10 mx-10 justify-center border-solid border-black border-2 flex-col rounded-lg w-[200px] h-[300px] hover:shadow-cardBox bg-white'
               >
                 <div className='w-full bg-black flex justify-center items-start flex-shrink-0 h-[15%] overflow-hidden'>
                   <h2 className='text-mainLighter text-base uppercase overflow-hidden mt-0'>
@@ -169,7 +167,7 @@ const HomePage: React.FC = () => {
                   <h3 className='text-2xl text-green m-auto'>{imovel.price}</h3>
                 </div>
 
-                <div className='w-full h-[40px] mb-0'>
+                <div className='w-full h-[40px] mb-0 bg-black'>
                   <Link
                     to={`/results/${imovel.id}`}
                     className='flex justify-center items-center bg-black no-underline text-white rounded-sm py-1.5 hover:text-main transition-color duration-500'

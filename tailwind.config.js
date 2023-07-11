@@ -21,6 +21,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Rubik", "sans-serif"],
+        title: ["Montserrat", "sans-serif"],
       },
       boxShadow: {
         cardBox: "0 0 5px 5px rgba(189,155,25,1), 0 0 5px 5px rgba(60,60,60,1)",

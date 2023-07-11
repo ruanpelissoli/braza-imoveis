@@ -45,7 +45,7 @@ const Results: React.FC = () => {
   };
 
   return (
-    <div className='bg-gradient-to-b from-mainDarker to-black'>
+    <div className='bg-gradient-to-b from-white to-mainUltraLighter'>
       <Filter />
       <ul className='flex flex-wrap p-0 justify-center items-center mx-4 list-none'>
         {atualImoveis &&
