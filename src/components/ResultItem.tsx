@@ -48,7 +48,7 @@ const ResultItem: React.FC<Imovel> = ({
               key={index}
               src={imagem}
               alt={imagem}
-              className='block rounded-lg shadow-boxMain w-[85%] h-[85%]'
+              className='block rounded-lg shadow-boxMain w-[85%] h-[85%] max-h-fit'
               style={{
                 display: index === currentImageIndex ? 'block' : 'none',
               }}

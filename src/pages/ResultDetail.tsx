@@ -61,7 +61,7 @@ const ResultDetailPage: React.FC = () => {
 
   return (
     <div className='flex flex-col lg:grid lg:grid-cols-2 gap-4 bg-gradient-to-b from-mainDarker to-black'>
-      <div className='flex md:w-[90%] justify-center relative items-center rounded-lg h-[500px] lg:h-[800px] bg-black shadow-boxMain xl:ml-10 mt-10 m-auto'>
+      <div className='flex w-full p-3 justify-center relative items-center rounded-lg h-[500px] lg:h-[800px] bg-black shadow-boxMain lg:ml-8 mt-10 m-auto'>
         <div className='relative items-center justify-center w-full'>
           {imovel.images &&
             imovel.images.map((imagem, index) => (
