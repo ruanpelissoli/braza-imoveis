@@ -3,6 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
+      xs: "350px",
       sm: "480px",
       md: "768px",
       lg: "1020px",
