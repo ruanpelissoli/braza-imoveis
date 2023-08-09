@@ -17,6 +17,18 @@ const MainNavigation: React.FC = () => {
               Home
             </NavLink>
           </li>
+          <li className='py-1.5 px-5'>
+            <NavLink
+              to='/landingPage'
+              className={({ isActive }) =>
+                isActive
+                  ? 'text-mainVeryLighter'
+                  : 'hover:text-mainVeryLighter transition-colors durantion-500'
+              }
+            >
+              Página Exemplo
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>

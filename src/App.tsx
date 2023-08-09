@@ -6,6 +6,7 @@ import Results from "./pages/Results";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import ResultDetailPage from "./pages/ResultDetail";
+import LandingPage from "./pages/LandingPage";
 
 const router = createHashRouter([
   {
@@ -15,12 +16,16 @@ const router = createHashRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: `/results`, // Extend the base URL for the results page
+        path: `/results`, 
         element: <Results />,
       },
       {
-        path: `/results/:id`, // Extend the base URL for the result detail page
+        path: `/results/:id`, 
         element: <ResultDetailPage />,
+      },
+      {
+        path: `/landingPage`, 
+        element: <LandingPage />,
       },
     ],
   },
