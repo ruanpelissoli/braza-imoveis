@@ -9,6 +9,7 @@ import funds from "../assets/funds.svg";
 import dashboard from "../assets/dashboard.svg";
 import analytics from "../assets/analytics.svg";
 import performance from "../assets/performance.svg";
+import SideBarFilter from "./SideBarFilter";
 
 const SideBar: React.FC = () => {
   const [isOpened, setIsOpened] = useState<boolean>(false);
@@ -17,7 +18,7 @@ const SideBar: React.FC = () => {
   };
   return (
     <nav
-      className={`fixed top-0 left-0 ${
+      className={`fixed top-0 left-0 hidden md:block ${
         isOpened
           ? "h-screen w-72 px-1 py-4 flex flex-col text-white transition-[width] bg-mainDarker"
           : " h-screen w-20 bg-mainDarker transition-[width]"
@@ -46,7 +47,11 @@ const SideBar: React.FC = () => {
           <img
             src={chevron}
             alt="Chevron"
-            className={`${isOpened ? "w-10 h-10 stroke-main rotate-180" : "w-10 h-10 stroke-main"}`}
+            className={`${
+              isOpened
+                ? "w-10 h-10 stroke-main rotate-180"
+                : "w-10 h-10 stroke-main"
+            }`}
           />
         </button>
       </div>
@@ -143,6 +148,7 @@ const SideBar: React.FC = () => {
               </span>
             </a>
           </li>
+          {isOpened && <SideBarFilter />}
         </ul>
       </div>
       <div className="flex flex-col justify-center px-2 mt-auto">
@@ -196,18 +202,34 @@ const SideBar: React.FC = () => {
             </li>
           </ul>
         </div>
+
         <div className="flex flex-row items-center gap-5 px-6 py-1">
           <div className="relative flex">
             <img
-              className={`${isOpened ? "block w-12 h-12 cursor-pointer rounded-[50%] object-cover hover:scale-105 hover:transition-all" : "visible"}`}
+              className={`${
+                isOpened
+                  ? "block w-12 h-12 cursor-pointer rounded-[50%] object-cover hover:scale-105 hover:transition-all"
+                  : "visible"
+              }`}
               src={profile}
               alt="Profile"
             />
-            
           </div>
           <div className="flex flex-col gap-1">
-            <div className={`${isOpened ? "text-left text-base font-extrabold" : "hidden"}`}>Joe Doe</div>
-            <div className={`${isOpened ? "text-left text-base font-extrabold" : "hidden"}`}>joe.doe@atheros.ai</div>
+            <div
+              className={`${
+                isOpened ? "text-left text-base font-extrabold" : "hidden"
+              }`}
+            >
+              Joe Doe
+            </div>
+            <div
+              className={`${
+                isOpened ? "text-left text-base font-extrabold" : "hidden"
+              }`}
+            >
+              joe.doe@atheros.ai
+            </div>
           </div>
         </div>
       </div>

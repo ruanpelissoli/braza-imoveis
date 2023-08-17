@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ResultItem from '../components/ResultItem';
 import { applyFilter } from '../store/filterActions';
-import Filter from '../components/Filter';
 import { RootState, Imovel, FilterOptions } from '../store/types';
 import { setImoveis } from '../store/imoveisActions';
 
@@ -46,7 +45,7 @@ const Results: React.FC = () => {
 
   return (
     <div className='bg-gradient-to-b from-white to-mainUltraLighter'>
-      <Filter />
+      
       <ul className='flex flex-wrap p-0 justify-center items-center mx-4 list-none'>
         {atualImoveis &&
           atualImoveis.map((result) => (

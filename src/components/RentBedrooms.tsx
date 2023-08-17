@@ -33,7 +33,7 @@ const RentBedrooms: React.FC<{}> = () => {
   return (
     <>
       <h2 className="text-3xl mt-10 font-sans mx-auto">Kitnets para Aluguel:</h2>
-      <div className="flex flex-col w-full lg:px-10 relative justify-center items-center lg:items-start shadow shadow-black rounded-xl lg:h-[350px] border-black border-2 my-4 mx-auto font-sans bg-gradient-to-r from-mainDarker to-black overflow-hidden">
+      <div className="flex flex-col w-full lg:px-10 relative justify-center items-center lg:items-start shadow shadow-black rounded-xl lg:h-[350px] border-black border-2 my-4 ml-20 mx-auto font-sans bg-gradient-to-r from-mainDarker to-black overflow-hidden">
         <div className="flex flex-col m-2 md:space-x-12 md:flex-row ">
           {atualEx.slice(startIndex, endIndex).map((imovel: Imovel) => (
             <li

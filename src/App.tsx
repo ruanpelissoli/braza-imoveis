@@ -16,15 +16,15 @@ const router = createHashRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: `/results`, 
+        path: `/results`,
         element: <Results />,
       },
       {
-        path: `/results/:id`, 
+        path: `/results/:id`,
         element: <ResultDetailPage />,
       },
       {
-        path: `/landingPage`, 
+        path: `/landingPage`,
         element: <LandingPage />,
       },
     ],
